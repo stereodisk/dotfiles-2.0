@@ -1,0 +1,9 @@
+# Read `man 5 sway` for a complete reference.
+include ~/.config/sway/init/*
+include ~/.config/sway/bar/*
+include ~/.config/sway/windows/*
+include ~/.config/sway/style/*
+include ~/.config/sway/utils/
+include ~/.config/sway/keybinds/*
+
+include /etc/sway/config.d/*
