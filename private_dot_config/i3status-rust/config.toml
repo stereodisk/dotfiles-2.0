@@ -1,0 +1,19 @@
+[[block]]
+block = "temperature"
+
+[[block]]
+block = "memory"
+
+[[block]]
+block = "backlight"
+device = "intel_backlight"
+
+[[block]]
+block = "battery"
+charging_format = "$icon $percentage "
+
+[[block]]
+block = "memory"
+[[block]]
+block = "time"
+interval = 5
