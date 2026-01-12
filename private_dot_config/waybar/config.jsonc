@@ -21,21 +21,20 @@
     "tray",
     "pulseaudio",
     "network",
-    "clock",
+    "clock"
   ],
 
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": false,
-    "tooltip": false,
+    "tooltip": false
   },
 
   "custom/applauncher": {
     "format": "〇",
     "tooltip": false,
-    "on-click": "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15",
+    "on-click": "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15"
   },
-
 
   "battery": {
     "format": "{icon} {capacity}%",
@@ -43,20 +42,16 @@
     "format-plugged": "󰂄 {capacity}%",
     "format-alt": "{icon} {time}",
     "format-full": "󱈑 {capacity}%",
-    "format-icons": [
-      "󱊡",
-      "󱊢",
-      "󱊣"
-    ],
+    "format-icons": ["󱊡", "󱊢", "󱊣"],
     "states": {
       "warning": 30,
-      "critical": 15,
-    },
-  }
+      "critical": 15
+    }
+  },
 
   "tray": {
     "tooltip": false,
-    "spacing": 10,
+    "spacing": 10
   },
 
   "network": {
@@ -71,21 +66,16 @@
     "format": "{icon} {volume}%",
     "format-bluetooth": "{icon} {volume}%",
     "format-muted": " ",
-    "format-icons": [
-      "",
-      " ",
-      " "
-    ],
+    "format-icons": ["", " ", " "],
     "tooltip": false,
     "on-click": "pavucontrol",
     "nospacing": 1,
-
     "scroll-step": 5,
-    "max-volume": 100,
+    "max-volume": 100
   },
 
   "clock": {
-    "format": "󰅐  {%I:%M%p}",
-    "tooltip": false,
-  },
+    "format": "󰅐  {:%I:%M%p}",
+    "tooltip": false
+  }
 }
