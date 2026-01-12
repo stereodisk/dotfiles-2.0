@@ -6,7 +6,7 @@ config = config
 config.load_autoconfig(False)
 
 # @BROWSER STYLE
-config.source("themes/everforest_light/everforest")  # colorscheme
+config.source("themes/everforest_light/everforest.py")  # colorscheme
 
 # Statusbar
 c.statusbar.widgets = ["search_match", "text:in", "url", "scroll"]
