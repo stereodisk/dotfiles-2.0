@@ -3,8 +3,8 @@
   "height": 0,
   "margin-top": 10,
   "margin-bottom": 0,
-  "margin-right": 500,
-  "margin-left": 500,
+  "margin-right": 250,
+  "margin-left": 250,
   "position": "top",
   "layer": "bot",
 
@@ -21,7 +21,7 @@
     "tray",
     "pulseaudio",
     "network",
-    "clock"
+    "clock",
   ],
 
   "sway/workspaces": {
