@@ -61,7 +61,7 @@
     "format-disconnected": "󰤮  No Network",
     "tooltip": false,
     "on-click": "",
-    "interval": 5,
+    "interval": 5
   },
 
   "bluetooth": {
@@ -70,8 +70,7 @@
     "format-connected": " {num_connections}",
     "format-connected-battery": "{icon} {num_connections}",
     "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
-    "tooltip" = false,
-    rotate": ${r_deg}
+    "tooltip" : false,
   },
 
   "pulseaudio": {
