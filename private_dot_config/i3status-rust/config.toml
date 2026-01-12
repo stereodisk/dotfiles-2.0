@@ -2,19 +2,19 @@
   theme = "plain"
 
 [theme.overrides]
-idle_bg = "#8b7355"
+idle_bg = "#1e1e1e"
 idle_fg = "#e6d9b8"
-info_bg = "#8b7355"
+info_bg = "#1e1e1e"
 info_fg = "#e6d9b8"
-good_bg = "#8b7355"
+good_bg = "#1e1e1e"
 good_fg = "#e6d9b8"
-warning_bg = "#8b7355"
+warning_bg = "#1e1e1e"
 warning_fg = "#e6d9b8"
-critical_bg = "#8b7355"
+critical_bg = "#1e1e1e"
 critical_fg = "#cc0000"
-separator = "|"
-separator_bg = "#8b7355"
-separator_fg = "#e6d9b8"
+separator = ""
+separator_bg = "auto"
+separator_fg = "auto"
 
 [icons]
   icons = "awesome6"
@@ -35,21 +35,20 @@ interval = 10
 block = "backlight"
 
 # Bluetooth
-[[block]]
-block = "bluetooth"
-format = "$icon $percentage"
-disconnected_format = "$icon"
+#[[block]]
+#block = "bluetooth"
+#format = "$icon $percentage"
+#disconnected_format = "$icon"
 
 # Volume
 [[block]]
 block = "sound"
-driver = "alsa"
 show_volume_when_muted = true
 
 # Network
 [[block]]
 block = "net"
-format = "^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K) "
+format = " ^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K) "
 format_alt = "{$ssid $signal_strength $frequency|Wired connection} "
 
 # Time
