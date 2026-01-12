@@ -1,0 +1,84 @@
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: #e6d9b8;
+  color: #1e1e1e;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+/* Left modules */
+#custom-mode,
+#window {
+  background-color: #e6d9b8;
+  color: #1e1e1e;
+  padding: 0 10px;
+  margin: 0;
+}
+
+#window {
+  font-style: italic;
+}
+
+/* Right modules */
+#custom-recording,
+#temperature,
+#memory,
+#backlight,
+#battery,
+#network,
+#pulseaudio,
+#clock {
+  background-color: #8b7355;
+  color: #e6d9b8;
+  padding: 0 12px;
+  margin: 5px 3px;
+  border-radius: 0px;
+}
+
+/* Separacion entre modulos */
+#custom-recording {
+  margin-left: 10px;
+}
+
+/* Estados críticos */
+#temperature.critical,
+#battery.critical {
+  background-color: #cc0000;
+  color: #ffffff;
+  animation: blink 1s linear infinite;
+}
+
+#battery.warning {
+  background-color: #d08770;
+  color: #1e1e1e;
+}
+
+#battery.charging {
+  background-color: #88c0d0;
+  color: #1e1e1e;
+}
+
+/* Animación para estados críticos */
+@keyframes blink {
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Tooltips */
+tooltip {
+  background-color: #8b7355;
+  border: 1px solid #e6d9b8;
+  border-radius: 5px;
+  color: #e6d9b8;
+}
+
+tooltip label {
+  color: #e6d9b8;
+}

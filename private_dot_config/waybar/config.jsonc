@@ -1,0 +1,110 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "spacing": 0,
+
+  "modules-left": [
+    "custom/mode",
+    "hyprland/window"
+  ],
+
+  "modules-center": [],
+
+  "modules-right": [
+    "custom/recording",
+    "temperature",
+    "memory",
+    "backlight",
+    "battery",
+    "network",
+    "pulseaudio",
+    "clock"
+  ],
+
+  // Modules configuration
+  "custom/mode": {
+    "format": " <md> ",
+    "tooltip": false
+  },
+
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 50,
+    "separate-outputs": true
+  },
+
+  "custom/recording": {
+    "format": "Rec  ",
+    "tooltip": false
+  },
+
+  "temperature": {
+    "thermal-zone": 0,
+    "format": " {temperatureC}°C",
+    "critical-threshold": 80,
+    "interval": 5
+  },
+
+  "memory": {
+    "format": " 󰍛 {percentage}%",
+    "interval": 5,
+    "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G"
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "  {percent}%",
+    "on-scroll-up": "brightnessctl set 5%+",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "  {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-full": "  {capacity}%",
+    "interval": 10
+  },
+
+  "network": {
+    "format-wifi": "  {signalStrength}%",
+    "format-ethernet": "  Connected",
+    "format-disconnected": "  Disconnected",
+    "tooltip-format": "{essid} ({signalStrength}%)",
+    "interval": 5
+  },
+
+  "pulseaudio": {
+    "format": "  {volume}%",
+    "format-muted": "  Muted",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+    "scroll-step": 5
+  },
+
+  "clock": {
+    "format": "   {:%I:%M%p}",
+    "format-alt": "   {:%A, %B %d}    {:%I:%M%p}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#e6d9b8'><b>{}</b></span>",
+        "days": "<span color='#e6d9b8'><b>{}</b></span>",
+        "weeks": "<span color='#8b7355'><b>W{}</b></span>",
+        "weekdays": "<span color='#8b7355'><b>{}</b></span>",
+        "today": "<span color='#1e1e1e' background='#e6d9b8'><b>{}</b></span>"
+      }
+    },
+    "interval": 30
+  }
+}
