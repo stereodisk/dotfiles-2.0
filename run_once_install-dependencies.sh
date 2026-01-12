@@ -86,7 +86,6 @@ sudo pacman -S --needed --noconfirm \
     pipewire-alsa \
     pipewire-jack \
     wireplumber \
-    pulseaudio \
     pavucontrol
 
 print_step "Habilitando servicios de audio..."
