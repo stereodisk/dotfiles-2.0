@@ -38,9 +38,11 @@ Neovim trae una serie de plugins preconfigurados para una mejor experiencia:
 ## WM
 - Sway: wm ligero
 - swaybg: componente de sway para wallpaper
-- [-] swayidle: componente para hibernacion
-- [-] wofi: app launcher
+- swayidle: componente para hibernacion
 - waybar: barra superior
+- gtk-engine-murrine: Motor para themes personalizados de gtk
+- Gnome Tweaks: Aplicador de themes personalizados para gtk 3
+- [-] wofi: app launcher
 - [-] wlogout: menu para apagar
 - [-] mako: notificaciones
 
