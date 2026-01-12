@@ -10,7 +10,6 @@ local needed_servers = {
 	"typescript-language-server",
 	"superhtml",
 	"cssls",
-	"ruby-lsp",
 }
 
 local needed_formatters = {
@@ -107,19 +106,6 @@ local servers_config = {
 					unusedparams = true,
 				},
 			},
-		},
-	},
-
-	-- @gleam
-	gleam = {},
-
-	-- @ruby
-	ruby_lsp = {
-		cmd = { "ruby-lsp" },
-		filetypes = { "ruby" },
-		init_options = {
-			formatter = "standard",
-			linters = { "standard" },
 		},
 	},
 
