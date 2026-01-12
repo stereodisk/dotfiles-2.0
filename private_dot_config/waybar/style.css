@@ -1,22 +1,19 @@
 * {
   font-family: GeistMono Nerd Font;
-  border-radius: 6px;
-
   font-size: 14px;
+  border-radius: 4px;
   padding: 0px;
   background: transparent;
 }
 
 window#waybar {
-
+  /* Fondo base absoluto (#161617) para que se fusione con tu monitor */
   background-color: #161617;
-  border-radius: 0px;
-
-  padding: 0px;
   border-bottom: 1px solid #27272A;
-
+  /* Borde sutil para separar de las ventanas */
 }
 
+/* Módulos */
 #battery,
 #network,
 #clock,
@@ -24,114 +21,81 @@ window#waybar {
 #tray,
 #workspaces,
 #pulseaudio {
-
+  /* Fondo un poco más claro que la base para jerarquía */
   background-color: #27272A;
+  color: #C9C7CD;
+  /* Texto gris claro (Hueso) */
+
   margin: 5px 3px;
   padding: 2px 12px;
   border-radius: 6px;
-
-
-  color: #C9C7CD;
-
   transition: all 0.2s ease-out;
 }
 
 #clock {
-  margin-right: 8px;
   font-weight: bold;
+  margin-right: 8px;
 }
 
-
-
+/* --- INTERACCIÓN (El toque Dark Mode) --- */
+/* Al pasar el mouse, se ilumina en Verde Salvia */
 #pulseaudio:hover,
 #custom-applauncher:hover,
 #battery:hover,
 #network:hover,
 #clock:hover {
-  background-color: #E6B99D;
+  background-color: #90B99F;
   color: #161617;
-
+  /* Texto oscuro para máximo contraste */
 }
 
 #custom-applauncher {
-  color: #E6B99D;
+  color: #90B99F;
+  /* El icono de inicio siempre en verde */
   font-weight: bold;
   padding-left: 14px;
   padding-right: 14px;
 }
 
-
-#tray menu {
-  background-color: #161617;
-  color: #C9C7CD;
-  padding: 6px;
-  border: 1px solid #27272A;
-}
-
-#tray menu menuitem {
-  background-color: transparent;
-  margin: 2px;
-  color: #C9C7CD;
-  border-radius: 4px;
-}
-
-#tray menu menuitem:hover {
-  background-color: #E6B99D;
-  color: #161617;
-}
-
-
+/* --- WORKSPACES --- */
 #workspaces {
   background-color: #161617;
-
   margin: 5px 4px;
 }
 
 #workspaces button {
-  transition: all 0.2s;
+  transition: color 0.2s;
   all: initial;
-  min-width: 0;
   font-family: GeistMono Nerd Font;
-
+  /* Inactivo: Gris oscuro (apenas visible, muy minimalista) */
   color: #57575F;
   padding: 0 8px;
   margin: 0px 2px;
-  border-radius: 4px;
 }
 
 #workspaces button:hover {
   color: #C9C7CD;
   background-color: #27272A;
+  border-radius: 4px;
 }
 
+/* El espacio activo brilla en verde */
 #workspaces button.focused,
 #workspaces button.active {
-  color: #E6B99D;
-
-  background-color: #27272A;
+  color: #90B99F;
   font-weight: bold;
 }
 
 #workspaces button.urgent {
   color: #F5A191;
-
+  /* Solo usamos salmón para errores */
 }
 
-
-#battery {
-  background-color: #27272A;
-  color: #C9C7CD;
-}
-
+/* --- ALERTAS --- */
 #battery.warning,
 #battery.critical,
 #battery.urgent {
   background-color: #F5A191;
-
   color: #161617;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  animation: blink 1s infinite alternate;
 }
