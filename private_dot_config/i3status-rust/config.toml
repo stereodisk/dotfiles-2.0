@@ -10,14 +10,14 @@ good_bg = "#8b7355"
 good_fg = "#e6d9b8"
 warning_bg = "#8b7355"
 warning_fg = "#e6d9b8"
-critical_bg = "#cc0000"
-critical_fg = "#000000"
+critical_bg = "#8b7355"
+critical_fg = "#cc0000"
 separator = "|"
 separator_bg = "#8b7355"
 separator_fg = "#e6d9b8"
 
 [icons]
-  icons = "~/.config/i3status-rust/icons.toml"
+  icons = "awesome6"
 
 # Battery
 [[block]]
@@ -27,6 +27,7 @@ full_format = "$icon"
 empty_format = " $icon $percentage"
 charging_format = " $icon $percentage  "
 not_charging_format = "$icon $percentage  "
+missing_format = ""
 interval = 10
 
 # Backlight
@@ -43,17 +44,19 @@ disconnected_format = "$icon"
 [[block]]
 block = "sound"
 driver = "alsa"
-show_volumen_when_muted = true
+show_volume_when_muted = true
 
 # Network
 [[block]]
 block = "net"
-format_alt = "$icon {$ssid $signal_strength $frequency|Wired connection} "
+format = "^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K) "
+format_alt = "{$ssid $signal_strength $frequency|Wired connection} "
 
 # Time
 [[block]]
 block = "time"
 interval = 60
+timezone = "America/Mexico_City"
 [block.format]
-  full = "$timestamp.datetime(f:'%a, %b %d  %I:%M%P', l:es_MX)"
-  short = "$timestamp.datetime(f:'%I:%M%P', l:es_MX)"
+  full = " $timestamp.datetime(f:'%^a, %^b %d  %I:%M%P', l:es_MX)"
+  short = " $timestamp.datetime(f:'%I:%M%P', l:es_MX)"
