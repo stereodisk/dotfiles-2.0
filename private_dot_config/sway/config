@@ -1,9 +1,12 @@
-# Read `man 5 sway` for a complete reference.
+# Essential
 include ~/.config/sway/init/*
+include ~/.config/sway/utils/
+
+# UI
 include ~/.config/sway/bar/*
 include ~/.config/sway/windows/*
-include ~/.config/sway/style/*
-include ~/.config/sway/utils/
-include ~/.config/sway/keybinds/*
 
+# Extras
+include ~/.config/sway/wallpaper/*
+include ~/.config/sway/keybinds/*
 include /etc/sway/config.d/*
