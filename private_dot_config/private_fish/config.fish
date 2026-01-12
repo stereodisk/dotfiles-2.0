@@ -13,8 +13,9 @@ abbr c 'clear'
 abbr cdd 'cd ..'
 abbr u 'sudo pacman -Syu'
 abbr nvimconfig 'cd ~/.config/nvim'
-abbr fishconfig 'nvim ~/.config/fish/config.fish'
 abbr swayconfig 'cd ~/.config/sway'
+abbr fishconfig 'cd ~/.config/foot'
+abbr fishconfig 'nvim ~/.config/fish/config.fish'
 
 # STARSHIP @Terminal Theme
 starship init fish | source
