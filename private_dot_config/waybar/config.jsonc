@@ -77,5 +77,6 @@
   "clock": {
     "format": "󰅐  {:%I:%M%p}",
     "tooltip": false
+    "timezone": "America/Mexico_City",
   }
 }
