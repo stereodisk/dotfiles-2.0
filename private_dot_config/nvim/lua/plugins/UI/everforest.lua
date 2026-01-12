@@ -4,8 +4,6 @@ require("lazy").setup({
 	lazy = false,
 	priority = 1000,
 	config = function()
-		require("everforest").setup({
-			-- Your config here
-		})
+		require("everforest").load()
 	end,
 })
