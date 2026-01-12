@@ -1,84 +1,117 @@
 * {
-  font-family: "JetBrainsMono Nerd Font", monospace;
-  font-size: 13px;
-  font-weight: 500;
-  min-height: 0;
+  font-family: Iosevka Nerd Font;
+  border-radius: 8;
+  font-size: 14px;
+  padding: 0px;
+  background: transparent;
 }
 
 window#waybar {
-  background-color: #e6d9b8;
-  color: #1e1e1e;
-  transition-property: background-color;
-  transition-duration: 0.5s;
+  background-image: linear-gradient(to bottom, #141216 100%);
+  border-radius: 14px;
+  padding: 0px;
+  border-style: none;
 }
 
-/* Left modules */
-#custom-mode,
-#window {
-  background-color: #e6d9b8;
-  color: #1e1e1e;
-  padding: 0 10px;
-  margin: 0;
-}
-
-#window {
-  font-style: italic;
-}
-
-/* Right modules */
-#custom-recording,
-#temperature,
-#memory,
-#backlight,
 #battery,
 #network,
-#pulseaudio,
+#clock,
+#custom-applauncher,
+#tray,
+#workspaces,
+#pulseaudio {
+  background-image: linear-gradient(to bottom, #27232b 100%);
+
+  margin: 6px;
+  margin-right: 0px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  color: #d8cab8;
+
+  border-style: none;
+  transition-duration: 120ms;
+}
+
 #clock {
-  background-color: #8b7355;
-  color: #e6d9b8;
-  padding: 0 12px;
-  margin: 5px 3px;
-  border-radius: 0px;
+  margin-right: 6px;
 }
 
-/* Separacion entre modulos */
-#custom-recording {
-  margin-left: 10px;
+#pulseaudio:hover {
+  background-image: linear-gradient(to bottom, #ac82e9 100%);
+  color: #141216;
+  transition-duration: 120ms;
 }
 
-/* Estados críticos */
-#temperature.critical,
-#battery.critical {
-  background-color: #cc0000;
-  color: #ffffff;
-  animation: blink 1s linear infinite;
+#custom-applauncher {
+  font-weight: bold;
+  transition-duration: 120ms;
 }
 
-#battery.warning {
-  background-color: #d08770;
-  color: #1e1e1e;
+#custom-applauncher:hover {
+  background-image: linear-gradient(to bottom, #ac82e9 100%);
+  color: #141216;
+  transition-duration: 120ms;
 }
 
-#battery.charging {
-  background-color: #88c0d0;
-  color: #1e1e1e;
+#tray menu {
+  background-color: #141216;
+  color: #d8cab8;
+  padding: 4px;
 }
 
-/* Animación para estados críticos */
-@keyframes blink {
-  50% {
-    opacity: 0.7;
-  }
+#tray menu menuitem {
+  background-image: linear-gradient(to bottom, #27232b 100%);
+
+  margin: 3px;
+  color: #d8cab8;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: #27232b;
 }
 
-/* Tooltips */
-tooltip {
-  background-color: #8b7355;
-  border: 1px solid #e6d9b8;
-  border-radius: 5px;
-  color: #e6d9b8;
+#tray menu menuitem:hover {
+  background-image: linear-gradient(to bottom, #27232b 100%);
+  color: #ac82e9;
+  font-weight: bold;
 }
 
-tooltip label {
-  color: #e6d9b8;
+#workspaces button {
+  transition-duration: 100ms;
+  all: initial;
+  min-width: 0;
+  font-weight: bold;
+  color: #d8cab8;
+  margin-right: 0.2cm;
+  margin-left: 0.2cm;
+}
+
+#workspaces button:hover {
+  transition-duration: 120ms;
+  color: #8f56e1;
+}
+
+#workspaces button.focused {
+  color: #ac82e9;
+  font-weight: bold;
+}
+
+#workspaces button.active {
+  color: #ac82e9;
+  font-weight: bold;
+}
+
+#workspaces button.urgent {
+  color: #fcb167;
+}
+
+#battery {
+  background-color: #222222;
+  color: #1d2021;
+}
+
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+  color: #1d2021;
+  background-color: #fc4649;
 }
