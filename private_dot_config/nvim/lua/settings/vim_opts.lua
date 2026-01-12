@@ -35,4 +35,4 @@ vim.opt.ignorecase = true
 vim.opt.signcolumn = "yes"
 
 -- colorscheme
-vim.cmd.colorscheme("oldworld")
+vim.cmd.colorscheme("everforest light")

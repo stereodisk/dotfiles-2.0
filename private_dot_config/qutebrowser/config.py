@@ -6,7 +6,7 @@ config = config
 config.load_autoconfig(False)
 
 # @BROWSER STYLE
-config.source("themes/qute-city-lights/city-lights-theme.py")  # colorscheme
+config.source("themes/everforest_light/everforest")  # colorscheme
 
 # Statusbar
 c.statusbar.widgets = ["search_match", "text:in", "url", "scroll"]
@@ -18,10 +18,8 @@ c.tabs.indicator.width = 0
 c.tabs.title.format = "{audio}{current_title}"  # Tabs style
 c.tabs.padding = {"top": 5, "bottom": 5, "left": 9, "right": 9}
 
-# Darkmode
-c.colors.webpage.darkmode.enabled = False  # not forcing darkmode
-c.colors.webpage.preferred_color_scheme = "dark"  # darkmode if possible
-c.colors.webpage.darkmode.policy.images = "never"
+# lightmode
+c.colors.webpage.preferred_color_scheme = "light"
 
 # @KEYBINDS/ALIASES
 # Aliases (commands)
