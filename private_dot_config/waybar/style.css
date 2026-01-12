@@ -2,17 +2,21 @@
   font-family: "GeistMono Nerd Font";
   border-radius: 8px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0px;
   background: transparent;
 }
 
 window#waybar {
+  background-color: transparent;
+  color: #5c6a72;
+}
+
+window#waybar>box {
   background-color: #fffbef;
   border-radius: 14px;
-  padding: 0px;
   border: 2px solid #edebd2;
-  color: #5c6a72;
+  margin: 4px;
 }
 
 #battery,

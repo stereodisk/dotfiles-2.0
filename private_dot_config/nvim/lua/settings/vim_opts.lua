@@ -35,4 +35,7 @@ vim.opt.ignorecase = true
 vim.opt.signcolumn = "yes"
 
 -- colorscheme
-vim.cmd.colorscheme("everforest light")
+vim.o.background = "light"
+vim.g.everforest_enable_italic = 1
+vim.g.everforest_better_performance = 1
+vim.cmd.colorscheme("everforest")
