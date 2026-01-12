@@ -7,13 +7,12 @@
 }
 
 window#waybar {
-  /* Fondo base absoluto (#161617) para que se fusione con tu monitor */
+
   background-color: #161617;
-  border-bottom: 1px solid #27272A;
-  /* Borde sutil para separar de las ventanas */
+  border-bottom: 4px solid #27272A;
+
 }
 
-/* Módulos */
 #battery,
 #network,
 #clock,
@@ -21,11 +20,8 @@ window#waybar {
 #tray,
 #workspaces,
 #pulseaudio {
-  /* Fondo un poco más claro que la base para jerarquía */
   background-color: #27272A;
   color: #C9C7CD;
-  /* Texto gris claro (Hueso) */
-
   margin: 5px 3px;
   padding: 2px 12px;
   border-radius: 6px;
@@ -37,8 +33,6 @@ window#waybar {
   margin-right: 8px;
 }
 
-/* --- INTERACCIÓN (El toque Dark Mode) --- */
-/* Al pasar el mouse, se ilumina en Verde Salvia */
 #pulseaudio:hover,
 #custom-applauncher:hover,
 #battery:hover,
@@ -46,18 +40,16 @@ window#waybar {
 #clock:hover {
   background-color: #90B99F;
   color: #161617;
-  /* Texto oscuro para máximo contraste */
+
 }
 
 #custom-applauncher {
   color: #90B99F;
-  /* El icono de inicio siempre en verde */
   font-weight: bold;
   padding-left: 14px;
   padding-right: 14px;
 }
 
-/* --- WORKSPACES --- */
 #workspaces {
   background-color: #161617;
   margin: 5px 4px;
@@ -67,7 +59,6 @@ window#waybar {
   transition: color 0.2s;
   all: initial;
   font-family: GeistMono Nerd Font;
-  /* Inactivo: Gris oscuro (apenas visible, muy minimalista) */
   color: #57575F;
   padding: 0 8px;
   margin: 0px 2px;
@@ -79,7 +70,6 @@ window#waybar {
   border-radius: 4px;
 }
 
-/* El espacio activo brilla en verde */
 #workspaces button.focused,
 #workspaces button.active {
   color: #90B99F;
@@ -88,10 +78,9 @@ window#waybar {
 
 #workspaces button.urgent {
   color: #F5A191;
-  /* Solo usamos salmón para errores */
+
 }
 
-/* --- ALERTAS --- */
 #battery.warning,
 #battery.critical,
 #battery.urgent {
