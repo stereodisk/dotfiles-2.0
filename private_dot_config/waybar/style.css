@@ -7,6 +7,34 @@
   background: transparent;
 }
 
+#workspaces,
+#custom-applauncher,
+#battery,
+#network,
+#tray,
+#bluetooth,
+#pulseaudio,
+#clock {
+  background-color: #edebd2;
+  margin: 6px 3px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  color: #5c6a72;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+
+#custom-applauncher:hover,
+#battery:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#clock:hover {
+  background-color: #8da101;
+  color: #fffbef;
+}
+
 window#waybar {
   background-color: transparent;
   color: #5c6a72;
@@ -17,69 +45,6 @@ window#waybar>box {
   border-radius: 14px;
   border: 2px solid #edebd2;
   margin: 4px;
-}
-
-#battery,
-#network,
-#clock,
-#custom-applauncher,
-#tray,
-#workspaces,
-#pulseaudio {
-  background-color: #edebd2;
-  margin: 6px 3px;
-  padding: 4px 12px;
-  border-radius: 8px;
-  color: #5c6a72;
-  border: none;
-  transition: all 0.2s ease-in-out;
-}
-
-#clock {
-  margin-right: 6px;
-  font-weight: bold;
-}
-
-
-#pulseaudio:hover,
-#custom-applauncher:hover,
-#battery:hover,
-#network:hover,
-#clock:hover {
-  background-color: #8da101;
-  color: #fffbef;
-}
-
-#custom-applauncher {
-  font-weight: bold;
-  color: #8da101;
-  background-color: #edebd2;
-}
-
-#custom-applauncher:hover {
-  color: #fffbef;
-}
-
-#tray menu {
-  background-color: #fffbef;
-  color: #5c6a72;
-  padding: 4px;
-  border-radius: 8px;
-  border: 1px solid #edebd2;
-}
-
-#tray menu menuitem {
-  background-color: #edebd2;
-  margin: 3px;
-  padding: 4px;
-  color: #5c6a72;
-  border-radius: 4px;
-  border: none;
-}
-
-#tray menu menuitem:hover {
-  background-color: #8da101;
-  color: #fffbef;
 }
 
 #workspaces {
@@ -118,6 +83,38 @@ window#waybar>box {
   background-color: #fffbef;
 }
 
+#custom-applauncher {
+  font-weight: bold;
+  color: #8da101;
+  background-color: #edebd2;
+}
+
+#custom-applauncher:hover {
+  color: #fffbef;
+}
+
+#tray menu {
+  background-color: #fffbef;
+  color: #5c6a72;
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid #edebd2;
+}
+
+#tray menu menuitem {
+  background-color: #edebd2;
+  margin: 3px;
+  padding: 4px;
+  color: #5c6a72;
+  border-radius: 4px;
+  border: none;
+}
+
+#tray menu menuitem:hover {
+  background-color: #8da101;
+  color: #fffbef;
+}
+
 #battery {
   background-color: #edebd2;
   color: #5c6a72;
@@ -133,4 +130,9 @@ window#waybar>box {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+}
+
+#clock {
+  margin-right: 6px;
+  font-weight: bold;
 }
