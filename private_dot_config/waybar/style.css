@@ -1,16 +1,16 @@
 * {
   font-family: GeistMono Nerd Font;
+  border-radius: 8px;
   font-size: 14px;
-  border-radius: 4px;
   padding: 0px;
   background: transparent;
 }
 
 window#waybar {
-
   background-color: #161617;
-  border-bottom: 4px solid #27272A;
-
+  border-radius: 14px;
+  padding: 0px;
+  border: none;
 }
 
 #battery,
@@ -21,16 +21,16 @@ window#waybar {
 #workspaces,
 #pulseaudio {
   background-color: #27272A;
+  margin: 6px 3px;
+  padding: 4px 12px;
+  border-radius: 8px;
   color: #C9C7CD;
-  margin: 5px 3px;
-  padding: 2px 12px;
-  border-radius: 6px;
-  transition: all 0.2s ease-out;
+  border: none;
+  transition: all 0.2s ease-in-out;
 }
 
 #clock {
-  font-weight: bold;
-  margin-right: 8px;
+  margin-right: 6px;
 }
 
 #pulseaudio:hover,
@@ -40,34 +40,51 @@ window#waybar {
 #clock:hover {
   background-color: #90B99F;
   color: #161617;
-
 }
 
 #custom-applauncher {
-  color: #90B99F;
   font-weight: bold;
-  padding-left: 14px;
-  padding-right: 14px;
+  color: #90B99F;
+}
+
+#tray menu {
+  background-color: #161617;
+  color: #C9C7CD;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+#tray menu menuitem {
+  background-color: #27272A;
+  margin: 3px;
+  padding: 4px;
+  color: #C9C7CD;
+  border-radius: 4px;
+  border: none;
+}
+
+#tray menu menuitem:hover {
+  background-color: #90B99F;
+  color: #161617;
 }
 
 #workspaces {
-  background-color: #161617;
-  margin: 5px 4px;
+  padding: 0px;
 }
 
 #workspaces button {
-  transition: color 0.2s;
+  transition: all 0.2s;
   all: initial;
+  min-width: 0;
   font-family: GeistMono Nerd Font;
+  font-weight: normal;
   color: #57575F;
-  padding: 0 8px;
-  margin: 0px 2px;
+  padding: 0 10px;
+  margin: 4px 2px;
 }
 
 #workspaces button:hover {
-  color: #C9C7CD;
-  background-color: #27272A;
-  border-radius: 4px;
+  color: #90B99F;
 }
 
 #workspaces button.focused,
@@ -78,7 +95,11 @@ window#waybar {
 
 #workspaces button.urgent {
   color: #F5A191;
+}
 
+#battery {
+  background-color: #27272A;
+  color: #C9C7CD;
 }
 
 #battery.warning,
@@ -86,5 +107,9 @@ window#waybar {
 #battery.urgent {
   background-color: #F5A191;
   color: #161617;
-  animation: blink 1s infinite alternate;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
