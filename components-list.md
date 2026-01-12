@@ -23,8 +23,8 @@ Por orden de descarga, estos son las dependencias del sistema:
 - btop (pacman) 
 - python-adblock (AUR)
 - Sway (pacman)
-- gtk-engine-murrine (pacman)
-- gtk3.2/4 everforest
+- gtk-engine-murrine (AUR)
+- gtk3.2/4 everforest (git clone https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme/tree/master.git)
 
 - [-] TODO 
 - swayidle (pacman)
