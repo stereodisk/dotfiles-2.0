@@ -1,4 +1,4 @@
-require("lazy").setup({
+return {
 	"neanias/everforest-nvim",
 	version = false,
 	lazy = false,
@@ -10,4 +10,4 @@ require("lazy").setup({
 		})
 		everforest.load()
 	end,
-})
+}
