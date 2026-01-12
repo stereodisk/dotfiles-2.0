@@ -27,7 +27,7 @@
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": false,
-    "tooltip": false
+    "tooltip": false,
   },
 
   "custom/applauncher": {
@@ -47,15 +47,15 @@
       "󱊡",
       "󱊢",
       "󱊣"
-    ]
+    ],
     "states": {
       "warning": 30,
-      "critical": 15
+      "critical": 15,
     },
   }
 
   "tray": {
-    "tooltip": false
+    "tooltip": false,
     "spacing": 10,
   },
 
@@ -63,7 +63,7 @@
     "format-wifi": "  {bandwidthDownBits}",
     "format-ethernet": "  {bandwidthDownBits}",
     "format-disconnected": "󰤮  No Network",
-    "tooltip": false
+    "tooltip": false,
     "interval": 5,
   },
 
@@ -76,7 +76,7 @@
       " ",
       " "
     ],
-    "tooltip": false
+    "tooltip": false,
     "on-click": "pavucontrol",
     "nospacing": 1,
 
@@ -86,6 +86,6 @@
 
   "clock": {
     "format": "󰅐  {%I:%M%p}",
-    "tooltip": false
+    "tooltip": false,
   },
 }
