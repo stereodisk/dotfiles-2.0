@@ -4,6 +4,6 @@ font=GeistMono Nerd Font 12
 background-color=#efebd4
 text-color=#5c6a72
 border-size=7
-icons = 1
+icon=1
 max-visible=3
 layer=overlay
