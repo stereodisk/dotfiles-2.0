@@ -61,19 +61,6 @@ sudo pacman -S --needed --noconfirm \
     fish \
     starship
 
-print_step "Instalando Fisher..."
-fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
-
-print_step "Instalando plugins de fish..."
-fish -c "fisher install jethrokuan/z"
-fish -c "fisher install PatrickF1/fzf.fish"
-
-print_step "Configurando fish como shell por defecto..."
-if [ "$SHELL" != "/usr/bin/fish" ]; then
-    chsh -s /usr/bin/fish
-    print_warning "Necesitarás cerrar sesión para que fish sea tu shell por defecto"
-fi
-
 print_step "Instalando Neovim y dependencias..."
 sudo pacman -S --needed --noconfirm \
     neovim \
