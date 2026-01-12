@@ -1,19 +1,77 @@
+theme = "plain"
+icons_format = " {icon} "
+
+[theme.overrides]
+idle_bg = "#8b7355"
+idle_fg = "#e6d9b8"
+info_bg = "#8b7355"
+info_fg = "#e6d9b8"
+good_bg = "#8b7355"
+good_fg = "#e6d9b8"
+warning_bg = "#8b7355"
+warning_fg = "#e6d9b8"
+critical_bg = "#cc0000"
+critical_fg = "#ffffff"
+separator = ""
+separator_bg = "auto"
+separator_fg = "auto"
+
+[icons]
+icons = "none"
+
+# Mode indicator (vim-like)
+[[block]]
+block = "focused_window"
+[block.format]
+full = " <md> "
+short = " <md> "
+
+# Temperature
 [[block]]
 block = "temperature"
+format = " $icon $max "
+interval = 5
+chip = "*-isa-*"
 
+# Memory
 [[block]]
 block = "memory"
+format = " $icon $mem_used_percents "
+format_alt = " $icon $mem_used/$mem_total "
+interval = 5
 
-[[block]]
-block = "backlight"
-device = "intel_backlight"
-
+# Battery
 [[block]]
 block = "battery"
-charging_format = "$icon $percentage "
+format = " $icon $percentage "
+full_format = " $icon $percentage "
+charging_format = " $icon $percentage "
+empty_format = " $icon $percentage "
+interval = 10
 
+# Backlight
 [[block]]
-block = "memory"
+block = "backlight"
+format = " $icon $brightness "
+device = "intel_backlight"
+
+# Volume
+[[block]]
+block = "sound"
+format = " $icon $volume "
+[[block.click]]
+button = "left"
+cmd = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+
+# Network
+[[block]]
+block = "net"
+format = " $icon $signal_strength "
+format_alt = " $icon {$ssid $signal_strength $frequency|Wired connection} "
+interval = 5
+
+# Time
 [[block]]
 block = "time"
-interval = 5
+format = " $timestamp.datetime(f:'%a, %b %d    %I:%M%P') "
+interval = 60
