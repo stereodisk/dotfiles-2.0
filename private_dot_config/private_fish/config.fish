@@ -8,11 +8,18 @@ set -Ux EDITOR nvim
 
 # ALIASES
 abbr q 'exit'
+abbr n 'nvim'
 abbr c 'clear'
-abbr u 'sudo pacman -Syu'
 abbr cdd 'cd ..'
+abbr u 'sudo pacman -Syu'
 abbr nvimconfig 'cd ~/.config/nvim'
 abbr fishconfig 'nvim ~/.config/fish/config.fish'
+abbr swayconfig 'cd ~/.config/sway'
 
 # STARSHIP @Terminal Theme
 starship init fish | source
+
+# @Plugins
+set -U fish_autosuggestion_strategy history
+set -U fzf_complete 1
+set -U fzf_preview_dir_cmd 'ls -la'
