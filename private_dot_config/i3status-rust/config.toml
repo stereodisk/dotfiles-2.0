@@ -1,5 +1,5 @@
-theme = "plain"
-icons_format = " {icon} "
+[theme]
+  theme = "plain"
 
 [theme.overrides]
 idle_bg = "#8b7355"
@@ -11,67 +11,49 @@ good_fg = "#e6d9b8"
 warning_bg = "#8b7355"
 warning_fg = "#e6d9b8"
 critical_bg = "#cc0000"
-critical_fg = "#ffffff"
-separator = ""
-separator_bg = "auto"
-separator_fg = "auto"
+critical_fg = "#000000"
+separator = "|"
+separator_bg = "#8b7355"
+separator_fg = "#e6d9b8"
 
 [icons]
-icons = "none"
-
-# Mode indicator (vim-like)
-[[block]]
-block = "focused_window"
-[block.format]
-full = " <md> "
-short = " <md> "
-
-# Temperature
-[[block]]
-block = "temperature"
-format = " $icon $max "
-interval = 5
-chip = "*-isa-*"
-
-# Memory
-[[block]]
-block = "memory"
-format = " $icon $mem_used_percents "
-format_alt = " $icon $mem_used/$mem_total "
-interval = 5
+  icons = "~/.config/i3status-rust/icons.toml"
 
 # Battery
 [[block]]
 block = "battery"
-format = " $icon $percentage "
-full_format = " $icon $percentage "
-charging_format = " $icon $percentage "
-empty_format = " $icon $percentage "
+format = " $icon $percentage"
+full_format = "$icon"
+empty_format = " $icon $percentage"
+charging_format = " $icon $percentage  "
+not_charging_format = "$icon $percentage  "
 interval = 10
 
 # Backlight
 [[block]]
 block = "backlight"
-format = " $icon $brightness "
-device = "intel_backlight"
+
+# Bluetooth
+[[block]]
+block = "bluetooth"
+format = "$icon $percentage"
+disconnected_format = "$icon"
 
 # Volume
 [[block]]
 block = "sound"
-format = " $icon $volume "
-[[block.click]]
-button = "left"
-cmd = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+driver = "alsa"
+show_volumen_when_muted = true
 
 # Network
 [[block]]
 block = "net"
-format = " $icon $signal_strength "
-format_alt = " $icon {$ssid $signal_strength $frequency|Wired connection} "
-interval = 5
+format_alt = "$icon {$ssid $signal_strength $frequency|Wired connection} "
 
 # Time
 [[block]]
 block = "time"
-format = " $timestamp.datetime(f:'%a, %b %d    %I:%M%P') "
 interval = 60
+[block.format]
+  full = "$timestamp.datetime(f:'%a, %b %d  %I:%M%P', l:es_MX)"
+  short = "$timestamp.datetime(f:'%I:%M%P', l:es_MX)"
