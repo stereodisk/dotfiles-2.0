@@ -22,12 +22,11 @@ Por orden de descarga, estos son las dependencias del sistema:
 - yay(pacman)
 - btop (pacman) 
 - python-adblock (AUR)
+- Sway (pacman)
 
 - [-] TODO 
-- Sway (pacman)
 - swayidle (pacman)
 - swaylock (pacman)
-- i3status_rust (pacman)
 - xorg-wayland (pacman)
 - pipewire (pacman)
 - grim (pacman)

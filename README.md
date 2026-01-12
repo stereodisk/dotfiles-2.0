@@ -8,6 +8,7 @@ Para una configuracion ordenada, minimalista y low-cost-performance usaremós ch
 - NetworkManager: Interfaz para wifi
 - brightnessctl
 - pulseaudio
+- pavucontrol
 
 ## Fonts
 Usaremos fonts minimalistas para no saturar la vista:
@@ -35,17 +36,16 @@ Usaremos fonts minimalistas para no saturar la vista:
 Neovim trae una serie de plugins preconfigurados para una mejor experiencia:
 
 ## WM
-- [-] Sway: wm ligero
-- [-] swaybg: componente de sway para wallpaper
+- Sway: wm ligero
+- swaybg: componente de sway para wallpaper
 - [-] swayidle: componente para hibernacion
 - [-] wofi: app launcher
-- i3status_rust: barra configurable
+- waybar: barra superior
 - [-] wlogout: menu para apagar
 - [-] mako: notificaciones
 
 ## Browser
 - Qutebrowser: Browser minimalista ligero para uso diario
-### Browser:Dependencies
     - python-adblock: Adblocker de brave
 
 ## Apps
