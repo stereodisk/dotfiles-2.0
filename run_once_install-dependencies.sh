@@ -125,22 +125,13 @@ sudo pacman -S --needed --noconfirm \
     slurp \
     swappy \
     thunar \
-    thunar-archive-plugin
 
-# ============================================================================
-# TEMAS E ICONOS
-# ============================================================================
 print_step "Instalando temas e iconos..."
 sudo pacman -S --needed --noconfirm \
     papirus-icon-theme \
     gnome-themes-extra
 
-# ============================================================================
-# SISTEMA DE AUDIO - MIGRACION A PIPEWIRE
-# ============================================================================
 print_step "Preparando migracion de PulseAudio a PipeWire..."
-
-# Detectar si hay paquetes de pulseaudio instalados
 PULSEAUDIO_INSTALLED=$(pacman -Qq | grep -E '^pulseaudio$' 2>/dev/null || true)
 
 if [ -n "$PULSEAUDIO_INSTALLED" ]; then
@@ -163,47 +154,31 @@ sudo pacman -S --needed --noconfirm --overwrite '*' \
     pipewire-jack \
     wireplumber
 
-# Instalar pavucontrol despues para que use las librerias de pipewire
 sudo pacman -S --needed --noconfirm --overwrite '*' pavucontrol
-
 print_step "Habilitando servicios de audio..."
 systemctl --user enable --now pipewire.socket 2>/dev/null || true
 systemctl --user enable --now pipewire-pulse.socket 2>/dev/null || true
 systemctl --user enable --now wireplumber.service 2>/dev/null || true
 
-# ============================================================================
-# SISTEMA DE RED (WiFi)
-# ============================================================================
 print_step "Instalando NetworkManager..."
 sudo pacman -S --needed --noconfirm \
     networkmanager \
     nm-connection-editor
-
 print_step "Habilitando NetworkManager..."
 sudo systemctl enable --now NetworkManager
 
-# ============================================================================
-# SISTEMA DE BLUETOOTH
-# ============================================================================
 print_step "Instalando Bluetooth..."
 sudo pacman -S --needed --noconfirm \
     bluez \
     bluez-utils \
     blueman
-
 print_step "Habilitando Bluetooth..."
 sudo systemctl enable --now bluetooth.service
 
-# ============================================================================
-# CONTROL DE BRILLO
-# ============================================================================
 print_step "Instalando control de brillo..."
 sudo pacman -S --needed --noconfirm \
     brightnessctl
 
-# ============================================================================
-# UTILIDADES DEL SISTEMA
-# ============================================================================
 print_step "Instalando utilidades del sistema..."
 sudo pacman -S --needed --noconfirm \
     btop \
@@ -216,32 +191,20 @@ sudo pacman -S --needed --noconfirm \
     zip \
     p7zip
 
-# ============================================================================
-# NAVEGADOR WEB
-# ============================================================================
 print_step "Instalando Qutebrowser..."
 sudo pacman -S --needed --noconfirm qutebrowser
-
 print_step "Instalando python-adblock..."
 yay -S --needed --noconfirm python-adblock
 
-# ============================================================================
-# APLICACIONES
-# ============================================================================
 print_step "Instalando aplicaciones..."
 yay -S --needed --noconfirm obsidian
-sudo pacman -S --needed --noconfirm \
-    zathura \
-    zathura-pdf-mupdf \
-    oculante \
-    mpv \
-    imv
+#sudo pacman -S --needed --noconfirm \
+#   zathura \
+#  zathura-pdf-mupdf \
+#    oculante \
+#    mpv \
+#   imv
 
-# ============================================================================
-# INFORMACION POST-INSTALACION
-# ============================================================================
-print_step "Las herramientas LSP y formatters se instalaran automaticamente via Mason en Neovim"
-print_warning "Al abrir Neovim por primera vez, espera a que se instalen los plugins y LSPs"
 
 echo ""
 echo -e "${YELLOW}REPORTE DE ESTADO:${NC}"
@@ -269,11 +232,7 @@ echo "  [✓] bluetooth  - Bluetooth"
 echo "  [✓] wifi       - NetworkManager"
 echo ""
 
-# ============================================================================
-# VERIFICACION DE INSTALACIONES
-# ============================================================================
 print_step "Verificando instalaciones..."
-
 check_command() {
     if command -v $1 &> /dev/null; then
         echo -e "  ${GREEN}✓${NC} $1"
