@@ -73,30 +73,62 @@ print_step "Instalando Sway y componentes configurados..."
 sudo pacman -S --needed --noconfirm \
     sway \
     swaybg \
+    swayidle \
+    swaylock \
     waybar \
     foot \
     grim \
     slurp \
-    swappy
+    swappy \
+    wofi \
+    mako
 
-print_step "Instalando sistema de audio..."
+print_step "Instalando sistema de audio (PipeWire)..."
 sudo pacman -S --needed --noconfirm \
     pipewire \
     pipewire-pulse \
     pipewire-alsa \
     pipewire-jack \
     wireplumber \
-    pavucontrol
-
+    pavucontrol \
+    pulseaudio
 print_step "Habilitando servicios de audio..."
 systemctl --user enable --now pipewire.socket
 systemctl --user enable --now pipewire-pulse.socket
 systemctl --user enable --now wireplumber.service
 
-print_step "Instalando utilidades del sistema..."
+print_step "Instalando NetworkManager..."
 sudo pacman -S --needed --noconfirm \
     networkmanager \
-    brightnessctl \
+    nm-connection-editor
+
+print_step "Habilitando NetworkManager..."
+sudo systemctl enable --now NetworkManager
+
+print_step "Instalando Bluetooth..."
+sudo pacman -S --needed --noconfirm \
+    bluez \
+    bluez-utils \
+    blueman
+
+print_step "Habilitando Bluetooth..."
+sudo systemctl enable --now bluetooth.service
+
+print_step "Instalando control de brillo..."
+sudo pacman -S --needed --noconfirm \
+    brightnessctl
+
+print_step "Instalando soporte de temas GTK..."
+sudo pacman -S --needed --noconfirm \
+    gtk3 \
+    gtk4
+
+yay -S --needed --noconfirm gtk-engine-murrine || print_warning "gtk-engine-murrine podría requerir instalación manual"
+
+print_warning "Recuerda clonar el tema Everforest GTK desde:"
+echo "  git clone https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme.git"
+print_step "Instalando utilidades del sistema..."
+sudo pacman -S --needed --noconfirm \
     btop \
     fzf \
     fd \
@@ -105,9 +137,6 @@ sudo pacman -S --needed --noconfirm \
     wget \
     unzip \
     zip
-
-print_step "Habilitando NetworkManager..."
-sudo systemctl enable --now NetworkManager
 
 print_step "Instalando Qutebrowser..."
 sudo pacman -S --needed --noconfirm qutebrowser
@@ -129,27 +158,30 @@ print_warning "Al abrir Neovim por primera vez, espera a que se instalen los plu
 print_warning "Los siguientes componentes NO están instalados porque requieren configuración:"
 echo ""
 echo -e "${YELLOW}COMPONENTES PENDIENTES:${NC}"
-echo "  [ ] wofi       - App launcher (requiere config + theme)"
-echo "  [ ] mako       - Notificaciones (requiere config + theme)"
-echo "  [ ] swayidle   - Gestión de energía (requiere config)"
-echo "  [ ] swaylock   - Lockscreen (requiere config + theme)"
 echo "  [ ] wlogout    - Menu de apagado (requiere config + theme)"
-echo "  [ ] GTK theme  - Tema GTK para aplicaciones"
 echo "  [ ] Cursor     - Tema de cursor"
 echo "  [ ] Icons      - Pack de iconos"
 echo "  [ ] wluma      - Brillo adaptativo (opcional)"
 echo "  [ ] File Mgr   - Dolphin u otro (opcional)"
 echo ""
-echo -e "${BLUE}NOTA:${NC} Estos componentes se instalarán en la siguiente fase junto con sus configuraciones"
+echo -e "${BLUE}NOTA:${NC} Estos componentes opcionales pueden instalarse después según necesidad"
 echo ""
 
-print_step "Verificando instalaciones..."
 
+print_step "Verificando instalaciones..."
 check_command() {
     if command -v $1 &> /dev/null; then
         echo -e "  ${GREEN}✓${NC} $1"
     else
         echo -e "  ${RED}✗${NC} $1"
+    fi
+}
+
+check_service() {
+    if systemctl is-enabled $1 &> /dev/null || systemctl --user is-enabled $1 &> /dev/null; then
+        echo -e "  ${GREEN}✓${NC} $1 (habilitado)"
+    else
+        echo -e "  ${YELLOW}○${NC} $1 (no habilitado)"
     fi
 }
 
@@ -164,6 +196,21 @@ check_command waybar
 check_command foot
 check_command qutebrowser
 check_command btop
+check_command bluetoothctl
+check_command nmcli
+check_command brightnessctl
+check_command wofi
+check_command mako
+check_command swayidle
+check_command swaylock
+
+echo ""
+echo "Verificando servicios:"
+check_service NetworkManager
+check_service bluetooth
+check_service pipewire
+check_service pipewire-pulse
+check_service wireplumber
 
 echo ""
 print_step "¡Instalación completada!"
@@ -177,28 +224,42 @@ echo ""
 echo -e "${YELLOW}CONFIGURACIÓN PENDIENTE:${NC}"
 echo ""
 echo -e "${RED}COMPONENTES SIN CONFIGURAR (requieren dotfiles/setup):${NC}"
-echo "  [ ] wofi       - App launcher"
-echo "  [ ] mako       - Sistema de notificaciones"
-echo "  [ ] swayidle   - Gestión de energía e hibernación"
-echo "  [ ] swaylock   - Pantalla de bloqueo"
 echo "  [ ] wlogout    - Menú de apagado"
-echo "  [ ] GTK        - Tema para aplicaciones GTK"
 echo "  [ ] Cursors    - Tema de cursor"
 echo "  [ ] Icons      - Pack de iconos"
 echo "  [ ] wluma      - Ajuste automático de brillo (NO INSTALADO)"
+echo "  [ ] File Mgr   - Gestor de archivos (NO INSTALADO)"
 echo ""
 echo -e "${GREEN}LISTO PARA USAR (ya configurados en dotfiles):${NC}"
 echo "  [✓] sway       - Window manager"
+echo "  [✓] swayidle   - Gestión de energía"
+echo "  [✓] swaylock   - Lockscreen"
 echo "  [✓] waybar     - Status bar"
+echo "  [✓] wofi       - App launcher"
+echo "  [✓] mako       - Notificaciones"
 echo "  [✓] foot       - Terminal"
 echo "  [✓] fish       - Shell"
 echo "  [✓] starship   - Prompt"
 echo "  [✓] neovim     - Editor"
 echo "  [✓] qutebrowser- Browser"
+echo "  [✓] GTK        - Tema GTK (Everforest)"
+echo ""
+echo -e "${GREEN}SERVICIOS ACTIVOS:${NC}"
+echo "  [✓] NetworkManager - Gestión de WiFi"
+echo "  [✓] Bluetooth      - Conectividad Bluetooth"
+echo "  [✓] PipeWire       - Sistema de audio"
+echo "  [✓] Brightnessctl  - Control de brillo"
 echo ""
 echo -e "${BLUE}TAREAS MANUALES:${NC}"
-echo "  1. Configurar wallpaper en ~/.config/sway/wallpaper/wallpaper.conf"
+echo "  1. Clonar tema GTK Everforest:"
+echo "     git clone https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme.git"
 echo "  2. Aplicar dotfiles con chezmoi"
-echo "  3. Primera ejecución de Neovim (instalará LSPs vía Mason)"
-echo "  4. Configurar componentes marcados como [ ]"
+echo "  3. Configurar wallpaper en ~/.config/sway/wallpaper/wallpaper.conf"
+echo "  4. Primera ejecución de Neovim (instalará LSPs vía Mason)"
+echo "  5. Verificar autostart.conf de Sway incluya swayidle"
+echo "  6. Configurar clicks en Waybar para abrir:"
+echo "     - Bluetooth: blueman-manager"
+echo "     - Network: nm-connection-editor"
+echo "     - Audio: pavucontrol"
+echo "  7. Configurar Mako para evitar spam de notificaciones (brillo/volumen)"
 echo ""

@@ -60,7 +60,7 @@
     "format-ethernet": "  {bandwidthDownBits}",
     "format-disconnected": "󰤮  No Network",
     "tooltip": false,
-    "on-click": "",
+    "on-click": "nm-connection-editor",
     "interval": 5
   },
 
@@ -70,7 +70,8 @@
     "format-connected": " {num_connections}",
     "format-connected-battery": "{icon} {num_connections}",
     "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
-    "tooltip" : false,
+    "tooltip": false,
+    "on-click": "blueman-manager"
   },
 
   "pulseaudio": {

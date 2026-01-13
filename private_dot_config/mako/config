@@ -9,3 +9,9 @@ text-color=#5c6a72
 border-color=#8da101
 border-size=2
 border-radius=8
+
+[urgency=low category=volume]
+group-by=category
+
+[urgency=low category=brightness]
+group-by=category
