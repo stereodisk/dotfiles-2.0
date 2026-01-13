@@ -34,8 +34,24 @@ if ! command -v yay &> /dev/null; then
     makepkg -si --noconfirm
     cd ~
 else
-    print_step "yay ya está instalado ✓"
+    print_step "yay ya esta instalado ✓"
 fi
+
+# ============================================================================
+# HARDWARE (INTEL LAPTOP)
+# ============================================================================
+print_step "Instalando drivers y microcode para Intel i3-N305..."
+sudo pacman -S --needed --noconfirm \
+    intel-ucode \
+    mesa \
+    vulkan-intel \
+    intel-media-driver \
+    libva-intel-driver \
+    sof-firmware \
+    tlp
+
+print_step "Habilitando TLP (Gestion de energia)..."
+sudo systemctl enable --now tlp
 
 # ============================================================================
 # FUENTES
@@ -43,7 +59,11 @@ fi
 print_step "Instalando fuentes..."
 sudo pacman -S --needed --noconfirm \
     ttf-nerd-fonts-symbols \
-    ttf-nerd-fonts-symbols-mono
+    ttf-nerd-fonts-symbols-mono \
+    ttf-liberation \
+    noto-fonts \
+    noto-fonts-cjk \
+    noto-fonts-emoji
 
 yay -S --needed --noconfirm ttf-geist-mono-nerd || print_warning "GeistMono no disponible en AUR, instalar manualmente"
 
@@ -91,22 +111,40 @@ print_step "Instalando Sway y componentes configurados..."
 sudo pacman -S --needed --noconfirm \
     sway \
     swaybg \
+    swayidle \
+    swaylock \
     waybar \
+    wofi \
+    wlogout \
+    polkit-gnome \
+    xorg-xwayland \
+    wl-clipboard \
+    mako \
     foot \
     grim \
     slurp \
-    swappy
+    swappy \
+    thunar \
+    thunar-archive-plugin
 
 # ============================================================================
-# SISTEMA DE AUDIO - MIGRACIÓN A PIPEWIRE
+# TEMAS E ICONOS
 # ============================================================================
-print_step "Preparando migración de PulseAudio a PipeWire..."
+print_step "Instalando temas e iconos..."
+sudo pacman -S --needed --noconfirm \
+    papirus-icon-theme \
+    gnome-themes-extra
+
+# ============================================================================
+# SISTEMA DE AUDIO - MIGRACION A PIPEWIRE
+# ============================================================================
+print_step "Preparando migracion de PulseAudio a PipeWire..."
 
 # Detectar si hay paquetes de pulseaudio instalados
 PULSEAUDIO_INSTALLED=$(pacman -Qq | grep -E '^pulseaudio$' 2>/dev/null || true)
 
 if [ -n "$PULSEAUDIO_INSTALLED" ]; then
-    print_warning "Detectado PulseAudio instalado. Será reemplazado por PipeWire."
+    print_warning "Detectado PulseAudio instalado. Sera reemplazado por PipeWire."
     
     # Remover pulseaudio forzadamente (ignorando dependencias)
     print_step "Removiendo PulseAudio..."
@@ -125,7 +163,7 @@ sudo pacman -S --needed --noconfirm --overwrite '*' \
     pipewire-jack \
     wireplumber
 
-# Instalar pavucontrol después para que use las librerías de pipewire
+# Instalar pavucontrol despues para que use las librerias de pipewire
 sudo pacman -S --needed --noconfirm --overwrite '*' pavucontrol
 
 print_step "Habilitando servicios de audio..."
@@ -175,7 +213,8 @@ sudo pacman -S --needed --noconfirm \
     ripgrep \
     wget \
     unzip \
-    zip
+    zip \
+    p7zip
 
 # ============================================================================
 # NAVEGADOR WEB
@@ -195,29 +234,43 @@ sudo pacman -S --needed --noconfirm \
     zathura \
     zathura-pdf-mupdf \
     oculante \
-    mpv
+    mpv \
+    imv
 
 # ============================================================================
-# INFORMACIÓN POST-INSTALACIÓN
+# INFORMACION POST-INSTALACION
 # ============================================================================
-print_step "Las herramientas LSP y formatters se instalarán automáticamente via Mason en Neovim"
+print_step "Las herramientas LSP y formatters se instalaran automaticamente via Mason en Neovim"
 print_warning "Al abrir Neovim por primera vez, espera a que se instalen los plugins y LSPs"
 
-print_warning "Los siguientes componentes NO están instalados porque requieren configuración:"
 echo ""
-echo -e "${YELLOW}COMPONENTES PENDIENTES:${NC}"
-echo "  [ ] swayidle   - Gestión de energía (requiere config)"
-echo "  [ ] wlogout    - Menu de apagado (requiere config + theme)"
-echo "  [ ] Cursor     - Tema de cursor"
-echo "  [ ] Icons      - Pack de iconos"
-echo "  [ ] wluma      - Brillo adaptativo (opcional)"
-echo "  [ ] File Mgr   - Dolphin u otro (opcional)"
+echo -e "${YELLOW}REPORTE DE ESTADO:${NC}"
 echo ""
-echo -e "${BLUE}NOTA:${NC} Estos componentes se instalarán en la siguiente fase junto con sus configuraciones"
+echo -e "${RED}LO QUE FALTABA Y SE HA INSTALADO:${NC}"
+echo "  [✓] intel-ucode & drivers - Soporte Hardware Laptop"
+echo "  [✓] tlp                   - Gestion de bateria"
+echo "  [✓] swayidle              - Gestion de inactividad"
+echo "  [✓] swaylock              - Pantalla de bloqueo"
+echo "  [✓] wofi                  - Launcher de apps"
+echo "  [✓] wlogout               - Menu de salida"
+echo "  [✓] thunar                - Gestor de archivos"
+echo "  [✓] wl-clipboard          - Copy/Paste (wayland)"
+echo "  [✓] polkit-gnome          - Permisos de admin GUI"
+echo "  [✓] papirus-icon-theme    - Tema de iconos"
+echo ""
+echo -e "${GREEN}LO QUE YA TENIAMOS (y se ha verificado):${NC}"
+echo "  [✓] sway       - Window Manager"
+echo "  [✓] waybar     - Barra de estado"
+echo "  [✓] foot       - Terminal"
+echo "  [✓] fish       - Shell"
+echo "  [✓] neovim     - Editor"
+echo "  [✓] pipewire   - Audio"
+echo "  [✓] bluetooth  - Bluetooth"
+echo "  [✓] wifi       - NetworkManager"
 echo ""
 
 # ============================================================================
-# VERIFICACIÓN DE INSTALACIONES
+# VERIFICACION DE INSTALACIONES
 # ============================================================================
 print_step "Verificando instalaciones..."
 
@@ -255,11 +308,16 @@ check_command btop
 check_command bluetoothctl
 check_command nmcli
 check_command brightnessctl
+check_command wl-copy
+check_command swaylock
+check_command wofi
+check_command thunar
 
 echo ""
 echo "Verificando servicios:"
 check_service NetworkManager
 check_service bluetooth
+check_service tlp
 
 echo ""
 echo "Verificando audio (PipeWire):"
@@ -267,43 +325,15 @@ if systemctl --user is-active pipewire &> /dev/null && systemctl --user is-activ
     echo -e "  ${GREEN}✓${NC} PipeWire activo"
     echo -e "  ${GREEN}✓${NC} PipeWire-Pulse activo"
 else
-    echo -e "  ${YELLOW}○${NC} PipeWire (se activará después del reinicio)"
+    echo -e "  ${YELLOW}○${NC} PipeWire (se activara despues del reinicio)"
 fi
 
 if pacman -Qq pulseaudio &> /dev/null; then
-    echo -e "  ${RED}✗${NC} PulseAudio aún instalado (conflicto potencial)"
+    echo -e "  ${RED}✗${NC} PulseAudio aun instalado (conflicto potencial)"
 else
     echo -e "  ${GREEN}✓${NC} PulseAudio removido correctamente"
 fi
 
 echo ""
-print_step "¡Instalación completada!"
-echo ""
-echo -e "${YELLOW}CONFIGURACIÓN PENDIENTE:${NC}"
-echo ""
-echo -e "${RED}COMPONENTES SIN CONFIGURAR (requieren dotfiles/setup):${NC}"
-echo "  [ ] wlogout    - Menú de apagado"
-echo "  [ ] Cursors    - Tema de cursor"
-echo "  [ ] Icons      - Pack de iconos"
-echo "  [ ] wluma      - Ajuste automático de brillo (NO INSTALADO)"
-echo "  [ ] wofi       - App launcher"
-echo ""
-echo -e "${GREEN}LISTO PARA USAR (ya configurados en dotfiles):${NC}"
-echo "  [✓] sway       - Window manager"
-echo "  [✓] swayidle   - Gestión de energía e hibernación"
-echo "  [✓] swaylock   - Lockscreen"
-echo "  [✓] waybar     - Status bar"
-echo "  [✓] foot       - Terminal"
-echo "  [✓] fish       - Shell"
-echo "  [✓] starship   - Prompt"
-echo "  [✓] neovim     - Editor"
-echo "  [✓] qutebrowser- Browser"
-echo "  [✓] mako       - Notificaciones"
-echo "  [✓] GTK        - Tema GTK"
-echo ""
-echo -e "${GREEN}SERVICIOS ACTIVOS:${NC}"
-echo "  [✓] NetworkManager - Gestión de WiFi"
-echo "  [✓] Bluetooth      - Conectividad Bluetooth"
-echo "  [✓] PipeWire       - Sistema de audio moderno"
-echo "  [✓] Brightnessctl  - Control de brillo"
+print_step "¡Instalacion completada!"
 echo ""

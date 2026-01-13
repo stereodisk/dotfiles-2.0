@@ -18,6 +18,7 @@
 
   "modules-right": [
     "battery",
+    "backlight",
     "tray",
     "bluetooth",
     "pulseaudio",
@@ -35,6 +36,15 @@
     "format": "󰍜",
     "tooltip": false,
     "on-click": "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15"
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "min-length": 6
   },
 
   "battery": {

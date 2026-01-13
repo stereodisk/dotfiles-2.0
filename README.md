@@ -1,18 +1,26 @@
 # DOTFILES
-Para una configuracion ordenada, minimalista y low-cost-performance usaremós chezmoi para administrar la configuración.
+Para una configuracion ordenada, minimalista y low-cost-performance usaremos chezmoi para administrar la configuracion.
 
-# Instalación
+# Instalacion
 ## Sistema
 - yay: AUR helper
 - pipewire: Interfaz para audio
 - NetworkManager: Interfaz para wifi
-- brightnessctl
-- pulseaudio
-- pavucontrol
+- brightnessctl: Control de brillo
+- tlp: Gestion de energia (bateria)
+- pavucontrol: Control de volumen GUI
+- xorg-xwayland: Compatibilidad con apps X11
+- polkit-gnome: Autenticacion GUI
+
+## Hardware (Intel)
+- intel-ucode: Microcode
+- vulkan-intel: Drivers Vulkan
+- intel-media-driver: Aceleracion de video
 
 ## Fonts
 Usaremos fonts minimalistas para no saturar la vista:
 - Nerdfonts: Necesarias para Starship y otros elementos de los dotfiles
+- Noto Fonts: Soporte general de texto y emojis
 
 ## Runtimes
 - python
@@ -23,44 +31,46 @@ Usaremos fonts minimalistas para no saturar la vista:
 - pip
 
 ## Terminal
-- kitty: Terminal ligera y extremadamente rapida para low-cost-performance
+- foot: Terminal ligera nativa de Wayland (mas ligera que kitty)
 - Fish: Shell con autocompletions, highlighting y suggestions builtin-in
 - Starship: Theme de los prompts de la shell
 - Fisher: Manager de plugins de fish
     - Plugins: jethrokuan/z y patrickf1/fzf.fish
 
 ## Editor
-- Neovim: Text editor para
-- Vim & Nano: Text editor basicos alternativos
+- Neovim: Text editor principal
+- Vim & Nano: Text editors basicos alternativos
 ### Editor: Neovim Plugins
-Neovim trae una serie de plugins preconfigurados para una mejor experiencia:
+Neovim trae una serie de plugins preconfigurados para una mejor experiencia.
 
-## WM
+## WM (Sway)
 - Sway: wm ligero
 - swaybg: componente de sway para wallpaper
-- swayidle: componente para hibernacion
+- swayidle: componente para inactividad/hibernacion
+- swaylock: pantalla de bloqueo
 - waybar: barra superior
+- wofi: app launcher
+- wlogout: menu para apagar
+- mako: notificaciones
+- wl-clipboard: portapapeles (wl-copy/wl-paste)
 - gtk-engine-murrine: Motor para themes personalizados de gtk
-- Gnome Tweaks: Aplicador de themes personalizados para gtk 3
-- [-] wofi: app launcher
-- [-] wlogout: menu para apagar
-- [-] mako: notificaciones
+- papirus-icon-theme: Iconos
 
 ## Browser
 - Qutebrowser: Browser minimalista ligero para uso diario
-    - python-adblock: Adblocker de brave
+    - python-adblock: Adblocker
 
 ## Apps
-- obsidian: Notas escolares
-- [-] Dolphin (o algun file manager)
-- Document viewer
-- Zathura
-- Oculante
-- mpv
+- obsidian: Notas
+- Thunar: File manager ligero
+- Zathura: Lector de PDF
+- Oculante: Visor de imagenes
+- mpv: Reproductor de video
+- imv: Visor de imagenes alternativo
 
-## Extras (todo)
+## Extras
 - fzf
-- zoxide
+- zoxide (via fish plugin 'z')
 - fd
 - bat
 - treesitter
@@ -68,9 +78,7 @@ Neovim trae una serie de plugins preconfigurados para una mejor experiencia:
 - rg 
 - unzip 
 - zip 
-- grim
-- btop 
-- grim
-- slurp 
-- swappy
-- wluma/lumactl
+- p7zip
+- grim (screenshots)
+- slurp (seleccion area)
+- swappy (edicion screenshots)

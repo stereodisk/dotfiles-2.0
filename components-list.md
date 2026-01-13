@@ -2,6 +2,7 @@
 Por orden de descarga, estos son las dependencias del sistema:
 - yay (pacman)
 - Nerdfonts (pacman)
+- Fonts: ttf-liberation, noto-fonts, noto-fonts-cjk, noto-fonts-emoji (pacman)
 - Fish (pacman)
 - Starship (pacman)
 - fisher (pacman)
@@ -19,28 +20,40 @@ Por orden de descarga, estos son las dependencias del sistema:
 - rg (pacman)
 - unzip (pacman)
 - zip (pacman)
-- yay(pacman)
+- p7zip (pacman)
 - btop (pacman) 
 - python-adblock (AUR)
 - Sway (pacman)
 - gtk-engine-murrine (AUR)
 - gtk3.2/4 everforest (git clone https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme/tree/master.git)
 
-- [-] TODO 
+## Hardware (Intel i3-N305)
+- intel-ucode (pacman)
+- mesa (pacman)
+- vulkan-intel (pacman)
+- intel-media-driver (pacman)
+- libva-intel-driver (pacman)
+- tlp (pacman) - Gestion de energia
+
+## Sway Components
 - swayidle (pacman)
 - swaylock (pacman)
-- xorg-wayland (pacman)
+- xorg-xwayland (pacman)
+- polkit-gnome (pacman)
+- wl-clipboard (pacman)
 - pipewire (pacman)
-- grim (pacman)
-- pulseaudio (pacman)
+- wireplumber (pacman)
 - brightnessctl (pacman) 
 - grim (pacman)
 - slurp (pacman)
 - swappy (pacman)
-- wluma/lumactl (pacman)
-- Oculante (pacman)
-- mpv (pacman)
 - wofi (pacman)
 - wlogout (pacman)
 - mako (pacman)
-- screenrecorder ??
+- thunar (pacman) - Gestor de archivos
+- papirus-icon-theme (pacman)
+
+## Apps
+- Oculante (pacman)
+- mpv (pacman)
+- imv (pacman)
