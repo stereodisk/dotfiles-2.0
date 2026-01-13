@@ -108,7 +108,7 @@ sudo pacman -S --needed --noconfirm vim nano
 # WINDOW MANAGER Y COMPONENTES
 # ============================================================================
 print_step "Instalando Sway y componentes configurados..."
-sudo pacman -S --needed --noconfirm \
+sudo pacman -S --needed \
     sway \
     swaybg \
     swayidle \
