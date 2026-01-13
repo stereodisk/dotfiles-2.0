@@ -124,7 +124,6 @@ sudo pacman -S --needed \
     grim \
     slurp \
     swappy \
-    thunar \
 
 print_step "Instalando temas e iconos..."
 sudo pacman -S --needed --noconfirm \
