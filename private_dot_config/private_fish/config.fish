@@ -30,7 +30,7 @@ set -Ux XDG_CURRENT_DESKTOP sway
 set -Ux XDG_SESSION_DESKTOP sway
 set -Ux XDG_SESSION_TYPE wayland
 set -Ux GDK_BACKEND wayland,x11
-set -Ux QT_QPA_PLATFORM wayland;xcb
+#set -Ux QT_QPA_PLATFORM wayland;xcb
 set -Ux SDL_VIDEODRIVER wayland
 set -Ux CLUTTER_BACKEND wayland
 set -Ux MOZ_ENABLE_WAYLAND 1
