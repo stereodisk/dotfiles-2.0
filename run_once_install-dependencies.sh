@@ -124,11 +124,7 @@ sudo pacman -S --needed \
     grim \
     slurp \
     swappy \
-
-print_step "Instalando temas e iconos..."
-sudo pacman -S --needed --noconfirm \
-    papirus-icon-theme \
-    gnome-themes-extra
+    thunar
 
 print_step "Preparando migracion de PulseAudio a PipeWire..."
 PULSEAUDIO_INSTALLED=$(pacman -Qq | grep -E '^pulseaudio$' 2>/dev/null || true)
