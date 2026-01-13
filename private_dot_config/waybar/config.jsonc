@@ -32,7 +32,7 @@
   },
 
   "custom/applauncher": {
-    "format": "〇",
+    "format": "󰍜",
     "tooltip": false,
     "on-click": "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15"
   },
