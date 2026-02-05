@@ -1,5 +1,5 @@
 # DOTFILES
-Para una configuracion ordenada, minimalista y low-cost-performance usaremos chezmoi para administrar la configuracion.
+configuracion ordenada, minimalista y low-cost-performance con chezmoi para administrar la configuracion
 
 # Instalacion
 ## Sistema
@@ -18,7 +18,6 @@ Para una configuracion ordenada, minimalista y low-cost-performance usaremos che
 - intel-media-driver: Aceleracion de video
 
 ## Fonts
-Usaremos fonts minimalistas para no saturar la vista:
 - Nerdfonts: Necesarias para Starship y otros elementos de los dotfiles
 - Noto Fonts: Soporte general de texto y emojis
 
