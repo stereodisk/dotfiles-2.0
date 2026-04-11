@@ -3,6 +3,11 @@
 local opts = { noremap = true, silent = true }
 -- <leader> = "<space>" -> lazy.lua
 
+-- @Generic shortcuts
+vim.keymap.set("n", "<leader>y", "<cmd> %y+ <CR>")
+vim.keymap.set({ "n", "i", "v" }, "<C-a>", "<Home>")
+vim.keymap.set({ "n", "i", "v" }, "<C-e>", "<End>")
+
 -- @Search:
 -- Telescope
 local builtin = require("telescope.builtin")

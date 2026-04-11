@@ -1,59 +1,34 @@
-# Componentes de los dotfiles
-Por orden de descarga, estos son las dependencias del sistema:
-- yay (pacman)
-- Nerdfonts (pacman)
-- Fonts: ttf-liberation, noto-fonts, noto-fonts-cjk, noto-fonts-emoji (pacman)
-- Fish (pacman)
-- Starship (pacman)
-- fisher (pacman)
-- Neovim (pacman)
-- Treesitter (pacman)
-- Treesitter-cli (pacman)
-- python (pacman)
-- go (pacman)
-- lua (pacman)
-- cargo (pacman)
-- clang (pacman)
-- luarocks (pacman)
-- pip (pacman)
-- wget (pacman)
-- rg (pacman)
-- unzip (pacman)
-- zip (pacman)
-- p7zip (pacman)
-- btop (pacman) 
-- python-adblock (AUR)
-- Sway (pacman)
-- gtk-engine-murrine (AUR)
-- gtk3.2/4 everforest (git clone https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme/tree/master.git)
+# Lista de Componentes del Sistema
 
-## Hardware (Intel i3-N305)
-- intel-ucode (pacman)
-- mesa (pacman)
-- vulkan-intel (pacman)
-- intel-media-driver (pacman)
-- libva-intel-driver (pacman)
-- tlp (pacman) - Gestion de energia
+## Core (Arch Linux / Pacman)
+*   **Drivers:** intel-ucode, mesa, vulkan-intel, intel-media-driver
+*   **Gestión Energía:** tlp (habilitado por defecto)
+*   **Audio:** Pipewire, Wireplumber, Pavucontrol
+*   **Red:** NetworkManager, Bluetooth (bluez)
+*   **WM:** Sway, Waybar, Mako, Fuzzel, Swaybg, Swayidle
+*   **Utilidades:** Grim, Slurp, Swappy, Brightnessctl, Btop, Fzf, FD, Bat, Ripgrep, Eza, Zoxide, Wget, Unzip, Zip, P7zip, Fortune-mod
+*   **Apps:** Nautilus, Neovim, Imv, Mpv, Zathura, Foot, Fish
 
-## Sway Components
-- swayidle (pacman)
-- swaylock (pacman)
-- xorg-xwayland (pacman)
-- polkit-gnome (pacman)
-- wl-clipboard (pacman)
-- pipewire (pacman)
-- wireplumber (pacman)
-- brightnessctl (pacman) 
-- grim (pacman)
-- slurp (pacman)
-- swappy (pacman)
-- wofi (pacman)
-- wlogout (pacman)
-- mako (pacman)
-- thunar (pacman) - Gestor de archivos
-- papirus-icon-theme (pacman)
+## Fuentes
+*   ttf-ibm-plex (Mono y Sans)
+*   ttf-liberation
+*   noto-fonts, noto-fonts-cjk, noto-fonts-emoji
+*   ttf-nerd-fonts-symbols-mono
 
-## Apps
-- Oculante (pacman)
-- mpv (pacman)
-- imv (pacman)
+## AUR (yay)
+*   zen-browser-bin (Navegador principal)
+*   swaylock-effects-git (Pantalla de bloqueo con desenfoque)
+*   eww-wayland-git (Widgets Frutiger Aero)
+*   phinger-cursors (Cursores)
+*   gtk-engine-murrine (Motor de temas GTK2/3)
+*   wlogout (Menú de apagado)
+*   obsidian (Notas)
+
+## Runtimes / Lenguajes
+*   Python & Pip
+*   Clang (C/C++)
+*   Rust & Cargo
+*   Lua & Luarocks
+*   Go
+*   Node.js & NPM
+*   Java (JDK)

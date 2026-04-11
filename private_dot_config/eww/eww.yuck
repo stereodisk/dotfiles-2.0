@@ -1,0 +1,40 @@
+(defpoll quote :interval "1m" "fortune -s")
+
+(defwidget image_cat []
+  (box :class "image-box"
+       :style "background-image: url('/home/microbread/.config/eww/assets/cat.jpg');"))
+
+(defwidget image_senna []
+  (box :class "image-box"
+       :style "background-image: url('/home/microbread/.config/eww/assets/senna.jpg');"))
+
+(defwidget fortune_widget []
+  (box :class "fortune-box"
+    (label :text quote 
+           :limit-width 150 
+           :wrap true 
+           :justify "left")))
+
+(defwindow cat_win
+  :monitor 0
+  :geometry (geometry :x "60px" :y "80px" :width "215px" :height "215px" :anchor "top right")
+  :stacking "bg"
+  :windowtype "desktop"
+  :wm-ignore true
+  (image_cat))
+
+(defwindow senna_win
+  :monitor 0
+  :geometry (geometry :x "60px" :y "360px" :width "215px" :height "215px" :anchor "top right")
+  :stacking "bg"
+  :windowtype "desktop"
+  :wm-ignore true
+  (image_senna))
+
+(defwindow fortune_win
+  :monitor 0
+  :geometry (geometry :x "60px" :y "60px" :width "600px" :height "150px" :anchor "bottom left")
+  :stacking "bg"
+  :windowtype "desktop"
+  :wm-ignore true
+  (fortune_widget))

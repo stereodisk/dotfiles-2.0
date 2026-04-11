@@ -1,143 +1,97 @@
 #!/bin/bash
 set -e
 
-
-
-
-RED='\033[0;31m'
+# Colores para la salida
 GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
 NC='\033[0m'
 
 print_step()   { echo -e "${BLUE}==>${NC} ${GREEN}$1${NC}"; }
-print_warning(){ echo -e "${YELLOW}==> WARNING:${NC} $1"; }
-print_error() { echo -e "${RED}==> ERROR:${NC} $1"; }
+print_warning(){ echo -e "${YELLOW}==> ADVERTENCIA:${NC} $1"; }
 
 print_step "Actualizando el sistema..."
 sudo pacman -Syu --noconfirm
 
+# @AUR Helper (yay)
 if ! command -v yay &>/dev/null; then
-    print_step "Instalando yay..."
+    print_step "Instalando yay (AUR helper)..."
     sudo pacman -S --needed --noconfirm git base-devel
-    cd /tmp
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si --noconfirm
-    cd ~
-else
-    print_step "yay ya esta instalado ✓"
+    git clone https://aur.archlinux.org/yay.git /tmp/yay
+    cd /tmp/yay && makepkg -si --noconfirm
+    cd -
 fi
 
-print_step "Instalando drivers Intel y energia..."
+# @Drivers y Hardware
+print_step "Instalando Drivers y Gestión de Energía (Intel)..."
 sudo pacman -S --needed --noconfirm \
-    intel-ucode \
-    mesa \
-    vulkan-intel \
-    intel-media-driver \
-    libva-intel-driver \
-    sof-firmware \
-    tlp
-
+    intel-ucode mesa vulkan-intel intel-media-driver libva-intel-driver \
+    sof-firmware tlp
 sudo systemctl enable --now tlp
 
-print_step "Instalando fuentes..."
+# @Fuentes
+print_step "Instalando Fuentes..."
 sudo pacman -S --needed --noconfirm \
-    ttf-nerd-fonts-symbols \
-    ttf-nerd-fonts-symbols-mono \
+    ttf-ibm-plex \
     ttf-liberation \
-    noto-fonts \
-    noto-fonts-cjk \
-    noto-fonts-emoji
+    noto-fonts noto-fonts-cjk noto-fonts-emoji \
+    ttf-nerd-fonts-symbols-mono
 
-yay -S --needed --noconfirm ttf-geist-mono-nerd || \
-    print_warning "Geist Mono no disponible"
-
-print_step "Instalando runtimes..."
+# @Lenguajes y Runtimes
+print_step "Instalando Runtimes y Lenguajes..."
 sudo pacman -S --needed --noconfirm \
     python python-pip \
     clang \
     rust cargo \
     lua luarocks \
     go \
-    jdk-openjdk \
-    nodejs npm
+    nodejs npm \
+    jdk-openjdk
 
-print_step "Instalando terminal y shell..."
+# @Entorno de Ventanas (Sway)
+print_step "Instalando Sway y componentes de interfaz..."
 sudo pacman -S --needed --noconfirm \
-    foot \
-    fish \
-    starship
+    sway swaybg swayidle waybar fuzzel mako \
+    xorg-xwayland wl-clipboard polkit-gnome \
+    grim slurp swappy \
+    brightnessctl papirus-icon-theme
 
-print_step "Instalando editores..."
+# @Audio y Red
+print_step "Instalando Audio y Red..."
 sudo pacman -S --needed --noconfirm \
-    neovim \
-    tree-sitter \
-    tree-sitter-cli \
-    vim \
-    nano
-
-print_step "Instalando Sway y core Wayland..."
-sudo pacman -S --needed --noconfirm \
-    sway \
-    swaybg \
-    swayidle \
-    swaylock \
-    waybar \
-    wofi \
-    xorg-xwayland \
-    wl-clipboard \
-    mako \
-    grim \
-    slurp \
-    swappy \
-    thunar \
-    polkit-gnome
-
-print_step "Instalando componentes AUR..."
-yay -S --needed --noconfirm wlogout
-
-print_step "Instalando PipeWire..."
-sudo pacman -S --needed --noconfirm --overwrite '*' \
-    pipewire \
-    pipewire-pulse \
-    pipewire-alsa \
-    pipewire-jack \
-    wireplumber \
-    pavucontrol
-
-systemctl --user enable --now pipewire.socket
-systemctl --user enable --now pipewire-pulse.socket
-systemctl --user enable --now wireplumber.service
-
-print_step "Instalando red..."
-sudo pacman -S --needed --noconfirm \
-    networkmanager \
-    nm-connection-editor
+    pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber pavucontrol \
+    networkmanager nm-connection-editor bluez bluez-utils blueman
 sudo systemctl enable --now NetworkManager
-
-print_step "Instalando Bluetooth..."
-sudo pacman -S --needed --noconfirm \
-    bluez \
-    bluez-utils \
-    blueman
 sudo systemctl enable --now bluetooth
 
-print_step "Instalando utilidades..."
+# @Terminal y Shell
+print_step "Instalando Terminal, Shell y utilidades CLI..."
 sudo pacman -S --needed --noconfirm \
-    brightnessctl \
-    btop \
-    fzf \
-    fd \
-    bat \
-    ripgrep \
-    wget \
-    unzip \
-    zip \
-    p7zip
+    foot fish eza fzf fd bat ripgrep zoxide btop \
+    wget unzip zip p7zip fortune-mod
 
-print_step "Instalando aplicaciones..."
-sudo pacman -S --needed --noconfirm qutebrowser
-yay -S --needed --noconfirm obsidian python-adblock
+# @Editores y Aplicaciones
+print_step "Instalando Editores y Apps principales..."
+sudo pacman -S --needed --noconfirm \
+    neovim vim nano tree-sitter tree-sitter-cli \
+    nautilus gvfs gvfs-mtp \
+    imv mpv zathura zathura-pdf-mupdf oculante
 
-print_step "¡Instalacion completada correctamente!"
+# @AUR Packages
+print_step "Instalando paquetes desde AUR..."
+yay -S --needed --noconfirm \
+    zen-browser-bin \
+    swaylock-effects-git \
+    eww-wayland-git \
+    phinger-cursors \
+    gtk-engine-murrine \
+    wlogout \
+    obsidian
+
+# Shell
+print_step "Configurando Fish como shell predeterminada..."
+if [ "$SHELL" != "/usr/bin/fish" ]; then
+    chsh -s /usr/bin/fish
+fi
+
+print_step "Instalacion completa, reinicia para aplicar cambios"

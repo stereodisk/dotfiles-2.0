@@ -1,0 +1,27 @@
+window {
+  background-color: rgba(0, 0, 0, 0);
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.background {
+  background-color: transparent;
+  background: none;
+}
+
+.image-box {
+  background-size: cover;
+  background-position: center;
+  border-radius: 35px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.fortune-box {
+  background-color: transparent;
+  color: white;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 1.4rem;
+  padding: 0px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+}

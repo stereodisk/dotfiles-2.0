@@ -1,29 +1,29 @@
 {
   "spacing": 0,
   "height": 0,
-  "margin-top": 10,
+  "margin-top": 1,
   "margin-bottom": 0,
-  "margin-right": 250,
-  "margin-left": 250,
+  "margin-right": 0,
+  "margin-left": 0,
   "position": "top",
   "layer": "bot",
 
   "modules-left": [
-    "sway/workspaces"
+    "sway/workspaces",
+    "sway/mode",
+    "battery#group",
+    "backlight#group"
   ],
 
   "modules-center": [
-    "custom/applauncher"
+    "clock"
   ],
 
   "modules-right": [
-    "battery",
-    "backlight",
     "tray",
-    "bluetooth",
-    "pulseaudio",
-    "network",
-    "clock"
+    "bluetooth#group",
+    "pulseaudio#group",
+    "network"
   ],
 
   "sway/workspaces": {
@@ -31,64 +31,63 @@
     "all-outputs": false,
     "tooltip": false
   },
-
-  "custom/applauncher": {
-    "format": "󰍜",
+  
+  "tray": {
     "tooltip": false,
-    "on-click": "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15"
+    "spacing": 10
   },
 
-  "backlight": {
+  "sway/window": {
+    "max-length": 30,
+    "tooltip": false
+  },
+
+  "backlight#group": {
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
-    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "format-icons": ["󰃞 ", "󰃟 ", "󰃠 "],
     "on-scroll-up": "brightnessctl set 1%+",
     "on-scroll-down": "brightnessctl set 1%-",
-    "min-length": 6
+    "min-length": 6,
+    "tooltip": false
   },
 
-  "battery": {
+  "battery#group": {
     "format": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
     "format-plugged": "󰂄 {capacity}%",
     "format-alt": "{icon} {time}",
     "format-full": "󱈑 {capacity}%",
     "format-icons": ["󱊡", "󱊢", "󱊣"],
-    "states": {
-      "warning": 30,
-      "critical": 15
-    }
-  },
-
-  "tray": {
-    "tooltip": false,
-    "spacing": 10
+    "tooltip": false
   },
 
   "network": {
-    "format-wifi": "  {bandwidthDownBits}",
-    "format-ethernet": "  {bandwidthDownBits}",
-    "format-disconnected": "󰤮  No Network",
+    "format-wifi": "   {signalStrength}%",
+    "format-ethernet": "   Eth",
+    "format-disconnected": "󰤮   No Network",
     "tooltip": false,
-    "on-click": "nm-connection-editor",
-    "interval": 5
+    "on-click": "nm-connection-editor"
   },
 
-  "bluetooth": {
-    "format": "",
-    "format-disabled": "",
-    "format-connected": " {num_connections}",
-    "format-connected-battery": "{icon} {num_connections}",
-    "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
+  "bluetooth#group": {
+    "format": "󰂯 ",
+    "format-off":"󰂲 ",
+    "format-disabled": "󰂲 ",
+    "format-connected": "󰂯 {status} {device_battery_percentage}",
+    "format-connected-battery": "{icon} {device_battery_percentage}%",
+    "format-icons": ["󰥇 ", "󰤾 ", "󰤿 ", "󰥀 ", "󰥁 ", "󰥂 ", "󰥃 ", "󰥄 ", "󰥅 ", "󰥆 ", "󰥈 "],
     "tooltip": false,
     "on-click": "blueman-manager"
+
   },
 
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-bluetooth": "{icon} {volume}%",
-    "format-muted": " ",
-    "format-icons": ["", " ", " "],
+  "pulseaudio#group": {
+    "format": "{icon} {volume}%  {format_source}",
+    "format-muted": "  {format_source}",
+    "format-source": "  ",
+    "format-source-muted": "  ",
+    "format-icons": [" ", "  ", "  "],
     "tooltip": false,
     "on-click": "pavucontrol",
     "nospacing": 1,
@@ -97,7 +96,8 @@
   },
 
   "clock": {
-    "format": "󰅐  {:%I:%M%p}",
+    "format": "󰅐  {:%H:%M | 󰃭  %d %b}",
+    "format-alt": "󰃭  {:%d/%m/%Y %H:%M}",
     "tooltip": false,
     "timezone": "America/Mexico_City"
   }

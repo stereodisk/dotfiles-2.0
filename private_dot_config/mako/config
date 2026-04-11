@@ -1,14 +1,18 @@
 max-history=10
 max-visible=3
-
 layer=overlay
 
-font=GeistMono Nerd Font 12
-background-color=#efebd4
-text-color=#5c6a72
-border-color=#8da101
+font=IBM Plex Sans 11
+background-color=#2a3f5fb3
+text-color=#d6e8ff
+border-color=#7dc4ff
+width=350
+height=250
 border-size=2
 border-radius=8
+
+default-timeout=3000
+ignore-timeout=1
 
 [urgency=low category=volume]
 group-by=category

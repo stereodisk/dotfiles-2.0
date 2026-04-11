@@ -1,12 +1,23 @@
 function fish_prompt
-	set_color brblue
-	echo -n (prompt_pwd)
-	
-	set git_branch (command git symbolic-ref --short HEAD 2>/dev/null)
-	if test -n "$git_branch"
-		set_color brmagenta
-		echo -n "[$git_branch]"
-	end
-	set_color normal
-	echo -n ' > '
+    set -l last_status $status
+
+    # PATH
+    set_color blue
+    if test "$PWD" = "$HOME"
+        echo '~'
+    else if test "$PWD" = "/"
+        echo '/'
+    else
+        echo (basename "$PWD")"/"
+    end
+
+    # CMD
+    if test $last_status -ne 0
+        set_color red
+    else
+        set_color magenta
+    end
+    
+    echo -n '❯ '
+    set_color normal
 end

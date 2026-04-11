@@ -5,67 +5,40 @@ return {
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")
 
+		-- Fortune header
 		local header = {
 			type = "text",
-			val = {
-				[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣍⡛⠛⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠀⠠⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀]],
-				[[⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⡈⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠲⠄⠀⠀⠀⠛⠛⠛⠛⠀]],
-				[[⣿⣿⣿⣿⣿⣿⣿⣿⠿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⢀⡀⠀⠀⠀]],
-				[[⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣁⣀⣀⠀⠀]],
-				[[⣿⣿⣿⣿⣿⣿⡿⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⣉⠀]],
-				[[⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠖⠛⠃]],
-				[[⣿⣿⠿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠤⡄⠀]],
-				[[⣿⣿⠀⢹⡿⠰⠂⠀⠀⠀⠀⠀⢀⠎⠀⠀⠀⠀⠀⠀⠘⣦⡇⠀⠀⠙⡂⠠⣘⠃⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠠⠐⠒⠁⠀]],
-				[[⢹⣿⠀⢨⣴⡖⠀⠀⠀⠀⠀⠀⠀⠀⡂⢀⠀⠀⠀⠀⡦⢸⣿⣶⣶⣶⣿⠦⢛⣃⡼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣶⣄⡐⠠⣀]],
-				[[⣠⠀⠆⠨⠻⣷⣤⡀⠀⠀⠀⠀⠀⠰⣀⣼⡆⠀⣠⣼⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⡆⠀⡄⡐⠀⠀⠀⠀⠀⠀⠀⢈⣩⣿⣿⣿⣿⣷⣤]],
-				[[⠈⠘⢷⣄⠸⣼⣗⣄⡀⠀⠀⠀⠀⠀⠈⠋⢳⡄⣬⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⢠⣴⠃⠀⠀⠀⠀⠐⢲⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
-				[[⣇⣷⣦⡉⠳⣌⡻⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⢳⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠾⡏⠀⠀⡀⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
-				[[⣿⣿⣿⣿⣦⣈⠻⢮⡻⠿⠛⠁⣀⣤⣤⣤⣶⣶⣤⣤⣤⣤⣤⣤⣤⠄⠈⣉⣭⡄⠈⣡⠞⣴⠀⢴⣀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
-				[[⣿⣿⣿⡿⠛⠛⢷⡄⠒⠧⠀⠹⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⣠⣤⣬⣉⢉⡙⠀⢋⣾⣿⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
-				[[⣿⣿⣽⠃⠀⣶⠆⠀⠀⠛⠃⠈⠓⠢⢝⠻⣿⣿⣿⠿⡿⡫⢠⣾⣿⣿⣦⡉⢀⡅⠂⡙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
-				[[⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠁⠈⠀⠈⠻⣿⣿⣿⣿⠟⢱⣷⣭⠳⣝⢿⣿⣿⡿⠟⣛⣛⣛⠿⢿⡿⢿⣿⣿⣿⣿]],
-				[[⡟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠂⠀⠁⣀⡠⢀⠀⠀⠉⠛⠋⠀⠀⠙⢿⣷⣌⠁⠩⢒⣠⣴⣶⣦⣍⠻⣿⣿⣿⣿⣿⣿⣿]],
-				[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢢⡈⠁⠀⠀⠀⠀⠀⣀⣤⣶⣶⣄⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡘⣿⣿⣿⣿⣿⣿]],
-				[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣦⡀⠀⠀⠀⢌⢿⣿⣿⣿⣿⣿⣦⣤⣍⡛⠿⣿⣿⣿⣿⣿⣿⣮⡈⠻⣿⣿⣿]],
-				[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢳⣄⠀⢺⣦⣀⠉⠋⠉⠉⣤⣤⣤⣭⣼⠑⣶⣾⣿⣿⣿⣿⣿⣿⣷⣦⣭⣽]],
-				[[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠛⠀⠰⠉⠈⠁⠀⠀⠀⠈⠻⣿⣿⠉⠀⣿⣿⣿⠿⠿⣿⣿⣿⣿⣿⣿⣿]],
-			},
+			val = function()
+				local lines = require("alpha.fortune")()
+				local out = {}
+
+				for _, line in ipairs(lines) do
+					if line:match("%S") then
+						table.insert(out, line)
+					end
+				end
+				return out
+			end,
 			opts = {
 				position = "center",
-				hl = "Keyword",
+				hl = "String",
 			},
 		}
 
-		-- Tasks
+		local mes = os.date("%B"):gsub("^%l", string.upper)
 		dashboard.section.tasks = {
 			type = "text",
-			val = os.date("%I:%M %p, %D - %B"),
+			val = os.date("%I:%M%p, %d - ") .. mes .. os.date(" - %Y"),
 			opts = {
 				hl = "Keyword",
 				position = "center",
 			},
 		}
-
-		-- Fortune (without spacing)
-		---@return table
-		dashboard.section.footer.val = function()
-			local lines = require("alpha.fortune")()
-			local out = {}
-
-			for _, line in ipairs(lines) do
-				if line:match("%S") then
-					table.insert(out, line)
-				end
-			end
-			return out
-		end
 
 		-- Layout
 		dashboard.config.layout = {
 			{ type = "padding", val = 1 },
 			header,
-			{ type = "padding", val = 0 },
-			dashboard.section.footer,
 			{ type = "padding", val = 1 },
 			dashboard.section.tasks,
 		}

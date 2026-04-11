@@ -89,6 +89,9 @@ local servers_config = {
 				diagnostics = {
 					globals = { "vim", "love" },
 				},
+				intl = {
+					locale = "es-es",
+				},
 			},
 		},
 	},

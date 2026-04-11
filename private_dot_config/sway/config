@@ -1,6 +1,6 @@
 # Essential
 include ~/.config/sway/init/*
-include ~/.config/sway/utils/
+include ~/.config/sway/utils/*
 
 # UI
 include ~/.config/sway/bar/*

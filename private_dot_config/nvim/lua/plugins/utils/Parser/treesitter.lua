@@ -1,25 +1,18 @@
--- AST installer
+-- Treesitter (nueva API)
 return {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  lazy = false,
+	"nvim-treesitter/nvim-treesitter",
+	lazy = false,
+	build = function()
+		require("nvim-treesitter.install").update({ with_sync = true })
+	end,
+	config = function()
+		local install = require("nvim-treesitter.install")
 
-  opts = {
-    ensure_installed = { "latex" },
-    auto_install = true,
-
-    highlight = {
-      enable = true,
-    },
-
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "<leader>ss",
-        node_incremental = "<leader>si",
-        scope_incremental = "<leader>sc",
-        node_decremental = "<leader>sd",
-      },
-    },
-  }
+		install.prefer_git = true
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function(args)
+				pcall(vim.treesitter.start, args.buf)
+			end,
+		})
+	end,
 }

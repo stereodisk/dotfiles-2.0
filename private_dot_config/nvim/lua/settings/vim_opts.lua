@@ -30,9 +30,9 @@ vim.opt.virtualedit = "block"
 -- replace split
 vim.opt.inccommand = "split"
 
+-- autoread
+vim.o.autoread = true
+
 -- cmdline
 vim.opt.ignorecase = true
 vim.opt.signcolumn = "yes"
-
--- colorscheme
-vim.o.background = "light"

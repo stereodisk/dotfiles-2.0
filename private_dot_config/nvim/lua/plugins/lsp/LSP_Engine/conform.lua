@@ -28,6 +28,8 @@ return {
 			cpp = { "clang_format" },
 			javascript = { "prettier" },
 			typescript = { "prettier" },
+			XML = { "xmlformatter" },
+			PHP = {},
 		},
 
 		format_on_save = function(bufnr)
