@@ -1,5 +1,12 @@
-# Dotfiles
-Una configuración minimalista para Sway WM enfocada en la estética **Frutiger Aero / Aqua Crystal**, optimizada para un bajo consumo de recursos (600-700MB en reposo) y alto rendimiento.
+<h1 align="center">
+  My personal dotfiles
+</h1>
+Una configuración minimalista para Sway WM enfocada en la estética **Frutiger Aero / Aqua Crystal**
+
+---
+<img width="1920" height="1080" alt="Desktop" src="https://github.com/user-attachments/assets/a50b3239-3629-4ab7-8acf-5f5bf113fc32" />
+
+---
 
 ## Componentes Principales
 *   **WM:** Sway (Wayland)
