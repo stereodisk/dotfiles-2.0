@@ -29,7 +29,8 @@ Se utiliza **chezmoi** para gestionar la configuración, para ello sigue estos p
     ~/.local/share/chezmoi/run_once_install-dependencies.sh
     ```
 
-## Atajos Principales (Super = ⊞)
+## Atajos Principales
+Super = ⊞
 *   `Super + T` -> Abrir Terminal (Foot)
 *   `Super + F` -> Abrir Navegador (Zen)
 *   `Super + D` -> Abrir Archivos (Nautilus)
