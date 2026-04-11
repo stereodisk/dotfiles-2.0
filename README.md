@@ -1,7 +1,7 @@
-# 🌿 FRUTIGER AERO DOTFILES
+# Dotfiles
 Una configuración minimalista para Sway WM enfocada en la estética **Frutiger Aero / Aqua Crystal**, optimizada para un bajo consumo de recursos (600-700MB en reposo) y alto rendimiento.
 
-## 🛠️ Componentes Principales
+## Componentes Principales
 *   **WM:** Sway (Wayland)
 *   **Barra:** Waybar (transparente con gradientes)
 *   **Terminal:** Foot (IBM Plex Mono)
@@ -12,8 +12,8 @@ Una configuración minimalista para Sway WM enfocada en la estética **Frutiger 
 *   **Notificaciones:** Mako
 *   **Widgets:** Eww (cat, senna, fortune)
 
-## 📦 Instalación
-Este repositorio utiliza **chezmoi** para gestionar la configuración.
+## Instalación
+Se utiliza **chezmoi** para gestionar la configuración, para ello sigue estos pasos:
 
 1.  **Instalar chezmoi:**
     ```bash
@@ -29,7 +29,7 @@ Este repositorio utiliza **chezmoi** para gestionar la configuración.
     ~/.local/share/chezmoi/run_once_install-dependencies.sh
     ```
 
-## ⌨️ Atajos Principales (Super = ⊞)
+## Atajos Principales (Super = ⊞)
 *   `Super + T` -> Abrir Terminal (Foot)
 *   `Super + F` -> Abrir Navegador (Zen)
 *   `Super + D` -> Abrir Archivos (Nautilus)
@@ -40,7 +40,7 @@ Este repositorio utiliza **chezmoi** para gestionar la configuración.
 *   `Print` -> Captura de pantalla completa
 *   `Super + Shift + S` -> Captura de área (slurp)
 
-## 🎨 Temas Usados
+## Temas
 *   **GTK:** Windows Longhorn Plex
 *   **Iconos:** Adwaita / Papirus
 *   **Cursores:** Phinger Cursors Dark
