@@ -1,6 +1,7 @@
 <h1 align="center">
   My personal dotfiles
 </h1>
+
 Una configuración minimalista para Sway WM enfocada en la estética **Frutiger Aero / Aqua Crystal**
 
 ---
