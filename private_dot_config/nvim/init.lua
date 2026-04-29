@@ -1,2 +1,2 @@
-require("manager.lazy")
-require("settings._st")
+require("manager.pack")
+require("settings.init")

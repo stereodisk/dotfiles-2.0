@@ -77,7 +77,7 @@ local servers_config = {
 				workspace = {
 					checkThirdParty = false,
 					library = {
-						--vim.env.VIMRUNTIME,
+						vim.env.VIMRUNTIME,
 						"${3rd}/love2d/library",
 					},
 				},
@@ -99,7 +99,7 @@ local servers_config = {
 	-- @go
 	gopls = {
 		cmd = { "gopls" },
-		filetypes = { "go", "gomod", "gowork", "gotmpl" },
+		filetypes = { "go", "gomod", "gowork" },
 
 		settings = {
 			gopls = {
@@ -149,17 +149,12 @@ local capabilities = vim.tbl_deep_extend(
 	}
 )
 
-local servers = vim.list_extend(
-	require("mason-lspconfig").get_installed_servers(),
-	{ "gleam" } -- not in Mason
-)
+local servers = require("mason-lspconfig").get_installed_servers()
 
 -- Enable servers (with or without pre-config)
 for _, server in ipairs(servers) do
 	local config = servers_config[server] or {}
 	config.capabilities = capabilities
-
 	vim.lsp.config(server, config)
 	vim.lsp.enable(server)
 end
-vim.lsp.inlay_hint.enable(true)

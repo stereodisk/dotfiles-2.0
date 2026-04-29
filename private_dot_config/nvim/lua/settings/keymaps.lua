@@ -1,7 +1,7 @@
 -- @Keymaps
 
 local opts = { noremap = true, silent = true }
--- <leader> = "<space>" -> lazy.lua
+vim.g.mapleader = " "
 
 -- @Generic shortcuts
 vim.keymap.set("n", "<leader>y", "<cmd> %y+ <CR>")
@@ -46,8 +46,8 @@ end, opts)
 vim.keymap.set("n", "<Tab>g", "<cmd>G<CR>", opts)
 
 -- @Plugin Manager:
--- Lazy
-vim.keymap.set("n", "<leader>l", "<cmd>Lazy<CR>", opts)
+-- Pack
+vim.keymap.set("n", "<leader>l", "<cmd>PackCheck<CR>", opts)
 
 -- @Terminal
 -- vim Builtin Terminal
@@ -61,5 +61,8 @@ end, opts)
 -- vim modes in Terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", opts)
 
--- @New vsplit
+-- @Vsplit
 vim.keymap.set("n", "<leader>vs", "<cmd>vsplit<CR>", opts)
+
+-- @Undotree
+vim.keymap.set("n", "<leader>u", require("undotree").open)

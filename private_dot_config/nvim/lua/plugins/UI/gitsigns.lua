@@ -1,6 +1,3 @@
-return {
-	"lewis6991/gitsigns.nvim",
-	opts = {
-		numhl = false,
-	},
-}
+require("gitsigns").setup({
+	numhl = false,
+})
